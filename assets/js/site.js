@@ -50,7 +50,7 @@
     if (!overlay) overlay = buildModal();
     var name = el.getAttribute("data-buy") || "this program";
     var price = el.getAttribute("data-price") || "";
-    overlay.querySelector("#modal-title").textContent = "Unlock " + name;
+    overlay.querySelector("#modal-title").textContent = name;
     overlay.querySelector("#modal-body").textContent =
       "You're purchasing “" + name + "”" + (price ? " for " + price : "") +
       ". After payment you'll get instant access to the full program, video demos, and the workout logger.";

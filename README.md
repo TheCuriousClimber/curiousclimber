@@ -13,6 +13,7 @@ repo root to GitHub Pages.
 | **Philosophy** | `philosophy.html` | Informational hub. Translates peer-reviewed sport science (exercise physiology, periodization, anatomy) into plain, first-year-undergrad language. Dispels the "lifting makes you bulky" myth to justify — and sell — resistance training. Mix of **free** promotional articles/videos and **premium** members' content. |
 | **Practice** | `practice.html` | Marketplace of pre-made, goal-specific, **periodized** programs (max strength, power, endurance, injury-prevention, mobility, balance…). Each program explains how its adaptations transfer to the wall and why to buy it. Includes a built-in **workout logger with progress charts**. |
 | **Performance** | `performance.html` | A custom program builder. Takes the climber's grade, experience, strengths/weaknesses, schedule, equipment and injuries, and generates a comprehensive periodized plan — plus an **"adapt my next block"** tool, and optional nutrition & mental-training add-ons. |
+| **Promotion** | `promotion.html` | Branded merch store — apparel, chalk bags and accessories — with category filtering and a demo checkout. |
 
 ### Free articles (Philosophy)
 - `articles/myth-bulk.html` — flagship: "Lifting will make me bulky" myth-busting
@@ -23,10 +24,11 @@ repo root to GitHub Pages.
 ## Structure
 
 ```
-index.html          Landing page tying the three pillars together
+index.html          Landing page tying the sections together
 philosophy.html     Section 01 — the science hub
 practice.html       Section 02 — program library + workout logger
 performance.html    Section 03 — custom program builder
+promotion.html      Section 04 — branded merch store
 articles/           Free long-form articles
 assets/css/styles.css   Shared design system
 assets/js/site.js       Nav, footer year, demo purchase modal
@@ -51,8 +53,10 @@ so the site owner can wire them to real services:
   field; confirm/expand exact sources before publishing.
 - **Videos** — video cards are placeholders; embed real videos when ready.
 
-Future consideration from the brief: a **Promotion** section selling branded
-merchandise (clothing, chalk bags) can be added as a fourth top-nav item.
+The **Promotion** merch store (`promotion.html`) uses the same demo checkout as
+the programs — connect a print-on-demand / e-commerce backend (Shopify,
+Printful, Gumroad) and swap the placeholder product art for real photos to sell
+for real.
 
 ## Credits
 David McWeeny, MSc Kinesiology · [@thecuriousclimber](https://instagram.com/thecuriousclimber)
