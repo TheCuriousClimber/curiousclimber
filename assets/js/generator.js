@@ -292,7 +292,7 @@
         '<div class="notice mt-3"><span>ℹ️</span><span>This is a science-based starting template, not medical advice. The full Performance product will refine load targets from your logged data and adjust automatically each week.</span></div>' +
 
         '<div class="mt-3 flex">' +
-          '<button class="btn btn-primary" data-buy="Custom Performance Program (12-month, adaptive)" data-price="$149/yr">Unlock the full adaptive program</button>' +
+          '<a class="btn btn-primary" href="#" data-buy="Custom Performance Program (12-month, adaptive)" data-price="$149/yr" data-product="custom-performance">Unlock the full adaptive program</a>' +
           '<button class="btn btn-ghost" id="print-plan" type="button">Print / save this plan</button>' +
         "</div>" +
       "</div>";
@@ -301,6 +301,8 @@
     results.innerHTML = html;
     results.classList.remove("hidden");
     document.getElementById("adapt").classList.remove("hidden");
+    /* wire the just-inserted unlock button to Gumroad if configured */
+    if (window.KOC && window.KOC.wireGumroad) window.KOC.wireGumroad();
     results.scrollIntoView({ behavior: "smooth", block: "start" });
 
     var pb = document.getElementById("print-plan");
