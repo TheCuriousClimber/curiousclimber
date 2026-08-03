@@ -36,6 +36,8 @@
     "members-library":   "members-library",
     // --- Performance ---
     "custom-performance":"custom-performance",
+    // --- The Garage / Autobody Shop ---
+    "lift-kit":          "lift-kit",
     // --- Promotion / merch ---
     "send-it-tee":  "send-it-tee",
     "hoodie":       "hoodie",
