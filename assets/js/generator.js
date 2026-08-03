@@ -128,6 +128,12 @@
         ["Strength", "High", "4–6", "2–3 min", "General &amp; finger strength"],
         ["Mixed / specific", "Varied", "varied", "varied", "Blend strength, power &amp; endurance"],
         ["Deload", "Low", "—", "—", "Recover"]
+      ],
+      durable: [
+        ["Base &amp; tissue prep", "Moderate", "8–10", "90–120 s", "Work capacity, tendon prep, groove patterns"],
+        ["Max strength", "High", "3–5", "2–3 min", "Force &amp; strength-to-weight — without bulk"],
+        ["Strength-power", "High (fast intent)", "2–4 explosive", "2–3 min", "Turn strength into fast, usable force (RFD)"],
+        ["Deload / retest", "Low", "—", "—", "Recover, then re-test your key lifts"]
       ]
     };
     var chosen = P[goal].map(function (row, i) {
@@ -145,20 +151,43 @@
     power: "Explosive Power",
     endurance: "Route Endurance",
     "power-endurance": "Power-Endurance",
-    allround: "Well-Rounded Base"
+    allround: "Well-Rounded Base",
+    durable: "The Durable Climber — Strength &amp; Longevity"
   };
 
   /* ---- build weekly split ---- */
   function weeklySplit(nDays, goal, weaknesses, injuries, equip) {
     /* Always weave in prehab. Emphasise weaknesses & goal. */
     var primaryCat = { strength: "fingers", power: "power", endurance: "endurance",
-      "power-endurance": "endurance", allround: "pull" }[goal];
+      "power-endurance": "endurance", allround: "pull", durable: "legs" }[goal];
 
     var week = [];
     function ex(cat, n) {
       return pick(cat, equip, injuries, n).map(function (x) { return x.n; });
     }
     var prehab = ex("prehab", 2);
+
+    /* The Durable Climber: a resistance-only A/B/C split emphasising the
+       qualities climbing under-trains — legs, pressing, external rotation
+       and tendon health — rather than more pulling/finger volume. */
+    if (goal === "durable") {
+      var legs = ex("legs", 3), push = ex("push", 3), pull = ex("pull", 4);
+      var pushH = push[1] || push[0], pushV = push[0];
+      var pullH = pull[2] || pull[1] || pull[0], pullV = pull[0];
+      var coreItem = ex("core", 1)[0] || "Anti-rotation core (Pallof / carries)";
+      var out = [];
+      out.push({ day: "Day A", focus: "Lower body + horizontal push/pull",
+        items: [legs[0] || "Trap-bar deadlift / squat", pushH, pullH, coreItem] });
+      if (Math.min(nDays, 3) >= 2)
+        out.push({ day: "Day B", focus: "Upper body + elbow &amp; shoulder durability",
+          items: [pushV, pullV].concat(prehab) });
+      if (Math.min(nDays, 3) >= 3)
+        out.push({ day: "Day C", focus: "Power, carries &amp; single-leg",
+          items: [(ex("power", 1)[0] || "KB swings"), (legs[2] || legs[legs.length - 1] || "Single-leg step-ups"), coreItem] });
+      if (nDays >= 4)
+        out.push({ day: "Day " + (out.length + 1), focus: "Mobility &amp; active recovery", items: ex("mobility", 2) });
+      return out;
+    }
 
     if (nDays <= 2) {
       week.push({ day: "Day 1", focus: "Full-body strength + " + primaryCat,
@@ -234,6 +263,11 @@
         "</strong>, extra volume is steered toward those qualities."
       : "No specific weak links flagged, so volume is balanced across qualities.";
 
+    /* durable goal: point to the full ready-made program write-up */
+    var durableNote = cfg.goal === "durable"
+      ? '<div class="callout mt-3"><h4>📋 The full write-up</h4><p>This is the builder version, scaled to your schedule. The complete <strong>12-week</strong> plan — with warm-up/prehab, mobility cool-downs, per-block loading and the peer-reviewed evidence behind every choice — is laid out in full in <a href="program-climbing-strength.html"><strong>The Durable Climber</strong></a>.</p></div>'
+      : "";
+
     /* injury note */
     var inj = cfg.injuries.length
       ? '<div class="notice mt-3"><span>⚠️</span><span><b>Working around your injury history (' +
@@ -244,7 +278,7 @@
     /* first-phase prescription */
     var p1 = ph[0];
     var primaryCat = { strength: "fingers", power: "power", endurance: "endurance",
-      "power-endurance": "endurance", allround: "pull" }[cfg.goal];
+      "power-endurance": "endurance", allround: "pull", durable: "legs" }[cfg.goal];
     var rx = pick(primaryCat, cfg.equip, cfg.injuries, 2)
       .concat(pick("pull", cfg.equip, cfg.injuries, 1))
       .concat(pick("core", cfg.equip, cfg.injuries, 1))
@@ -270,6 +304,7 @@
           ", training <strong>" + cfg.days + " days/week</strong> in ~" + cfg.session + "-minute sessions with " +
           equipLabel(cfg.equip) + ". " + prio + "</p>" +
         "</div></div>" +
+        durableNote +
         inj +
 
         '<h3 class="mt-4">Mesocycle overview — how your variables progress</h3>' +
