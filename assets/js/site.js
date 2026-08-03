@@ -14,37 +14,41 @@
 (function () {
   "use strict";
 
-  /* ------------------------------------------------------------------ */
-  /*  >>> EDIT THIS BLOCK TO GO LIVE <<<                                  */
-  /* ------------------------------------------------------------------ */
-  var GUMROAD_USER = ""; // e.g. "thecuriousclimber" — leave "" for demo mode
+  // >>> THE ONLY LINE YOU MUST EDIT TO GO LIVE <<<
+  // Set this to your Gumroad subdomain. While it's "" the whole site stays in
+  // safe demo mode (nothing is charged), no matter what's in GUMROAD_PRODUCTS.
+  var GUMROAD_USER = ""; // e.g. "thecuriousclimber"
+
+  // Permalinks are pre-filled to match each product key. Create your Gumroad
+  // products using these exact permalinks (see GUMROAD-SETUP.md) and they light
+  // up automatically once GUMROAD_USER is set. Change a value here only if your
+  // Gumroad permalink differs; set a value back to "" to keep that one in demo.
   var GUMROAD_PRODUCTS = {
-    // product key (data-product on the button) : Gumroad permalink
     // --- Practice programs ---
-    "contact-strength":  "",
-    "anaerobic-capacity":"",
-    "power-endurance":   "",
-    "body-tension-core": "",
-    "hips-mobility":     "",
-    "footwork-balance":  "",
-    "complete-bundle":   "",
+    "contact-strength":  "contact-strength",
+    "anaerobic-capacity":"anaerobic-capacity",
+    "power-endurance":   "power-endurance",
+    "body-tension-core": "body-tension-core",
+    "hips-mobility":     "hips-mobility",
+    "footwork-balance":  "footwork-balance",
+    "complete-bundle":   "complete-bundle",
     // --- Philosophy membership ---
-    "members-library":   "",
+    "members-library":   "members-library",
     // --- Performance ---
-    "custom-performance":"",
+    "custom-performance":"custom-performance",
     // --- Promotion / merch ---
-    "send-it-tee":  "",
-    "hoodie":       "",
-    "technical-tee":"",
-    "beanie":       "",
-    "chalk-bag":    "",
-    "chalk-bucket": "",
-    "loose-chalk":  "",
-    "liquid-chalk": "",
-    "bottle":       "",
-    "salve":        "",
-    "stickers":     "",
-    "starter-kit":  ""
+    "send-it-tee":  "send-it-tee",
+    "hoodie":       "hoodie",
+    "technical-tee":"technical-tee",
+    "beanie":       "beanie",
+    "chalk-bag":    "chalk-bag",
+    "chalk-bucket": "chalk-bucket",
+    "loose-chalk":  "loose-chalk",
+    "liquid-chalk": "liquid-chalk",
+    "bottle":       "bottle",
+    "salve":        "salve",
+    "stickers":     "stickers",
+    "starter-kit":  "starter-kit"
   };
   /* ------------------------------------------------------------------ */
 

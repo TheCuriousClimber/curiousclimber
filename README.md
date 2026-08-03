@@ -55,7 +55,11 @@ so the site owner can wire them to real services:
 - **Newsletter form** — connect to your email provider.
 - **Citations** — article references point to well-established work in the
   field; confirm/expand exact sources before publishing.
-- **Videos** — video cards are placeholders; embed real videos when ready.
+- **Product photos** — merch cards show gradient/emoji placeholders. Drop a
+  photo into `assets/img/` named by product key (e.g. `send-it-tee.jpg`) and it
+  appears automatically — no HTML editing. See `assets/img/README.md`.
+- **Videos** — Philosophy video cards are click-to-load YouTube embeds. Set a
+  card's `data-yt=""` to a YouTube ID to activate it; empty stays a placeholder.
 
 The **Promotion** merch store (`promotion.html`) uses the same demo checkout as
 the programs — connect a print-on-demand / e-commerce backend (Shopify,
