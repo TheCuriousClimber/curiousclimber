@@ -41,8 +41,12 @@ assets/js/generator.js  Rules-based custom-program engine
 This is a fully working **front-end**. A few things are intentionally stubbed
 so the site owner can wire them to real services:
 
-- **Payments** — "Buy / Unlock" buttons open a demo checkout modal
-  (`data-buy` in `assets/js/site.js`). Connect to Stripe, Gumroad, etc.
+- **Payments (Gumroad)** — Buy / Unlock / Add-to-cart buttons are wired to
+  Gumroad and ship in **demo mode** (a modal opens, nothing is charged). To go
+  live, fill in `GUMROAD_USER` and the product permalinks in the config block at
+  the top of `assets/js/site.js` — no code changes needed. Full walkthrough and
+  the product-key → price table are in **`GUMROAD-SETUP.md`**. Products you leave
+  blank stay in demo mode, so you can switch to live payments one at a time.
 - **Workout logger** — data is stored in the browser via `localStorage`. Swap
   for a backend/account system to sync across devices.
 - **Performance builder** — a transparent, rules-based engine grounded in
