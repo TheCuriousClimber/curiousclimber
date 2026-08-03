@@ -36,6 +36,11 @@
     "members-library":   "members-library",
     // --- Performance ---
     "custom-performance":"custom-performance",
+    // --- Training System subscriptions & seminar ---
+    "sub-essential":  "sub-essential",
+    "sub-complete":   "sub-complete",
+    "sub-coach":      "sub-coach",
+    "seminar-virtual":"seminar-virtual",
     // --- Promotion / merch ---
     "send-it-tee":  "send-it-tee",
     "hoodie":       "hoodie",

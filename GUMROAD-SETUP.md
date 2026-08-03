@@ -30,6 +30,10 @@ they match.
 | `complete-bundle`    | The Complete Climber Bundle | $119 | Digital bundle |
 | `members-library`    | Members' Library | $59/yr | Membership |
 | `custom-performance` | Custom Performance Program (adaptive) | $149/yr | Membership |
+| `sub-essential`      | Training System — Essential (up to 3 programs) | $12/mo | Subscription |
+| `sub-complete`       | Training System — Complete (all programs + hub) | $24/mo | Subscription |
+| `sub-coach`          | Training System — Coach / Pro | $49/mo | Subscription |
+| `seminar-virtual`    | Trainer Certification Seminar (virtual) | $199 | Event / digital |
 | `send-it-tee`        | "Send It" Tee | $32 | Physical (variants: size) |
 | `hoodie`             | Kinesiology Hoodie | $58 | Physical (variants: size) |
 | `technical-tee`      | Technical Training Tee | $38 | Physical (variants: size) |

@@ -12,8 +12,38 @@ repo root to GitHub Pages.
 | --- | --- | --- |
 | **Philosophy** | `philosophy.html` | Informational hub. Translates peer-reviewed sport science (exercise physiology, periodization, anatomy) into plain, first-year-undergrad language. Dispels the "lifting makes you bulky" myth to justify — and sell — resistance training. Mix of **free** promotional articles/videos and **premium** members' content. |
 | **Practice** | `practice.html` | Marketplace of pre-made, goal-specific, **periodized** programs (max strength, power, endurance, injury-prevention, mobility, balance…). Each program explains how its adaptations transfer to the wall and why to buy it. Includes a built-in **workout logger with progress charts**. |
+| **Programs** | `programs.html` | **The training system.** A data-driven strength & conditioning engine: periodized program templates rendered into full, phone-friendly plans, where **every exercise has a regression/progression ladder** you scale in place. Four-part workouts, evidence-based justifications with citations, plain-language how-to, scalable subscription tiers, and a train-the-trainer seminar. See "The training system" below. |
 | **Performance** | `performance.html` | A custom program builder. Takes the climber's grade, experience, strengths/weaknesses, schedule, equipment and injuries, and generates a comprehensive periodized plan — plus an **"adapt my next block"** tool, and optional nutrition & mental-training add-ons. |
 | **Promotion** | `promotion.html` | Branded merch store — apparel, chalk bags and accessories — with category filtering and a demo checkout. |
+
+### The training system (`programs.html`)
+
+A general strength & conditioning engine that reads two data files and renders complete, professional, mobile-first programs — no build step. It directly implements the brief: template-driven programs, periodization, scalable difficulty, four-section workouts, full metadata + evidence, exercise demos, and tiered subscriptions.
+
+```
+assets/data/exercises.js   Exercise LIBRARY. Every exercise is a "family":
+                           an ordered ladder from easiest regression →
+                           hardest progression (MBSC-style scalable
+                           difficulty), with cues, tempo and a demo link
+                           per variation. 35 families / 111 variations.
+assets/data/programs.js    PROGRAM TEMPLATES + subscription TIERS. Each
+                           program has metadata (audience, length, gear,
+                           level, tier), a high-school-readable description,
+                           an evidence-based justification with citations, a
+                           how-to glossary, and PHASES → four-section
+                           WORKOUTS that reference the exercise library.
+assets/js/program-engine.js  Renders the filterable library, the full
+                           program viewer (overview → periodization table →
+                           phase-by-phase workouts), the live ◀ Regress /
+                           Progress ▶ scaler on each exercise, and the
+                           pricing-tier grid. Print/save built in.
+```
+
+**Adding a program:** append an object to `TS_PROGRAMS` in `programs.js`, referencing exercise `id`s from `exercises.js`. Each workout needs `warmup`, `prehab`, a main block (`main`/`power`/`conditioning`) and `cooldown` arrays of `{ ex, level, sets, reps, tempo, rest, note }`. `level` is the starting rung of that exercise's ladder; the viewer lets users scale up/down from there.
+
+**Adding an exercise:** append a family to `TS_EXERCISES`. Give it a `levels` array ordered easiest → hardest. Each level's demo link defaults to a **YouTube search** for its `q` phrase (so links never rot); to pin a specific curated video, add `yt: "<youtube-id>"` to that level.
+
+**Subscription tiers** live in `TS_TIERS` and scale by how many programs a member can open (Free → Essential → Complete → Coach/Pro). Each tier's CTA is wired to Gumroad via its `product` key (`sub-essential`, `sub-complete`, `sub-coach`); the trainer seminar uses `seminar-virtual`. Fill the permalinks in `assets/js/site.js` to go live — see `GUMROAD-SETUP.md`.
 
 ### Free articles (Philosophy)
 - `articles/myth-bulk.html` — flagship: "Lifting will make me bulky" myth-busting
@@ -27,13 +57,18 @@ repo root to GitHub Pages.
 index.html          Landing page tying the sections together
 philosophy.html     Section 01 — the science hub
 practice.html       Section 02 — program library + workout logger
+programs.html       The training system — data-driven periodized programs
 performance.html    Section 03 — custom program builder
 promotion.html      Section 04 — branded merch store
 articles/           Free long-form articles
 assets/css/styles.css   Shared design system
+assets/data/exercises.js  Exercise library w/ progression/regression ladders
+assets/data/programs.js   Program templates + subscription tiers
+assets/js/program-engine.js  Renders programs, the scaler, and pricing tiers
 assets/js/site.js       Nav, footer year, demo purchase modal
 assets/js/logger.js     Workout log (localStorage) + SVG progress charts
 assets/js/generator.js  Rules-based custom-program engine
+assets/js/media.js      Drop-in product photos + click-to-load YouTube
 ```
 
 ## Notes for going live
