@@ -25,7 +25,7 @@ assets/data/exercises.js   Exercise LIBRARY. Every exercise is a "family":
                            an ordered ladder from easiest regression →
                            hardest progression (MBSC-style scalable
                            difficulty), with cues, tempo and a demo link
-                           per variation. 35 families / 111 variations.
+                           per variation. 47 families / 150 variations.
 assets/data/programs.js    PROGRAM TEMPLATES + subscription TIERS. Each
                            program has metadata (audience, length, gear,
                            level, tier), a high-school-readable description,

@@ -865,6 +865,511 @@
           ]
         }
       ]
+    },
+
+    /* =================================================================
+       5) BUILD MUSCLE (hypertrophy)
+       ================================================================= */
+    {
+      id: "build-muscle",
+      title: "Build Muscle",
+      tagline: "An eight-week hypertrophy block to add lean, usable size.",
+      goal: "hypertrophy",
+      level: "intermediate",
+      weeks: 8,
+      daysPerWeek: 4,
+      sessionMinutes: 60,
+      equipment: "Dumbbells (a range of weights) or a gym, a bench, and a pull-up bar or band.",
+      equipmentTier: "gym",
+      tier: "complete",
+      audience: "Intermediate lifters who already train the basic patterns and want a structured, higher-volume plan to build muscle without guesswork.",
+      description:
+        "Muscle grows when you give it enough hard, challenging work and then feed and rest it. This block does exactly that. It's split into an upper-body day and a lower-body day, each hit twice a week, and it climbs through three phases: first you pile up quality volume, then you push a bit heavier to add tension, then you peak and deload so your body can turn all that work into size. You'll train close to — but not quite to — failure, in rep ranges built for growth, with the prehab and mobility that keep you in the game.",
+      justification: [
+        { plain: "Total hard sets — your 'volume' — is one of the biggest levers for muscle growth. More weekly sets per muscle generally means more growth, up to a sensible point, which is why volume climbs early in the plan.",
+          cite: "Schoenfeld BJ, Ogborn D, Krieger JW. Dose-response relationship between weekly resistance training volume and muscle hypertrophy. J Sports Sci. 2017." },
+        { plain: "Muscle responds to a range of rep counts as long as sets are taken close to failure. We mostly live in the 8–15 range with 1–3 reps left in reserve, which balances growth with manageable fatigue.",
+          cite: "Schoenfeld BJ, et al. Effects of low- vs. high-load resistance training on muscle strength and hypertrophy. J Strength Cond Res. 2015." },
+        { plain: "Training each muscle about twice a week, rather than once, lets you accumulate more quality volume with better form, which supports more growth.",
+          cite: "Schoenfeld BJ, Ogborn D, Krieger JW. Effects of resistance training frequency on measures of muscle hypertrophy: a meta-analysis. Sports Med. 2016." },
+        { plain: "On your big lifts we keep rests a bit longer (about 2 minutes). For trained lifters, that preserves the load and reps you can do across sets, which drives more growth than very short rests.",
+          cite: "Schoenfeld BJ, et al. Longer inter-set rest periods enhance muscle strength and hypertrophy in resistance-trained men. J Strength Cond Res. 2016." }
+      ],
+      howto: [
+        { name: "Reps in reserve (RIR)", text: "Stop most sets with 1–3 reps still in the tank. That's close enough to failure to grow, without wrecking your form or recovery. On the last set of an exercise you can push to 0–1 RIR." },
+        { name: "Volume", text: "The total number of hard working sets you do for a muscle each week. It's the main dial we turn up to drive growth — but only as fast as you can recover from it." },
+        { name: "Tempo for growth", text: "Control the lowering (the 3 in 3-0-1) and feel the target muscle work. Slow, deliberate reps create more useful tension than fast, bouncy ones." },
+        { name: "Progressive overload", text: "Beat last week a little: add a rep, a small load, or a set. When a lift feels easy at the top of its rep range on every set, add weight and drop back down the range." },
+        { name: "Fuel & sleep", text: "Growth needs raw materials. Eat enough total food with plenty of protein (roughly 1.6–2.2 g per kg of bodyweight daily) and sleep well — the training is only half the job." }
+      ],
+      phases: [
+        {
+          name: "Phase 1 — Volume accumulation",
+          weeks: "1–3",
+          focus: "Build a big base of quality sets in higher rep ranges with short-to-moderate rests. Chase a strong muscle 'pump' and clean form.",
+          scheme: { intensity: "Moderate (2–3 RIR)", sets: "3", reps: "10–15", rest: "60–90 s", tempo: "3-0-1" },
+          progression: "Add reps within the range each week; when you top the range on all sets, add a little load. Add one set to a lagging muscle in week 3 if you're recovering well.",
+          workouts: [
+            {
+              name: "Upper A — Push emphasis",
+              warmup: [
+                { ex: "catcow", level: 1, sets: 1, reps: "6" },
+                { ex: "dislocate", level: 1, sets: 2, reps: "10" },
+                { ex: "facepull", level: 1, sets: 2, reps: "15" }
+              ],
+              prehab: [
+                { ex: "extrot", level: 1, sets: 2, reps: "15" }
+              ],
+              main: [
+                { ex: "hpush", level: 2, sets: 3, reps: "10–12", rest: "90 s" },
+                { ex: "vpush", level: 2, sets: 3, reps: "10–12", rest: "75 s" },
+                { ex: "hpull", level: 2, sets: 3, reps: "12–15", rest: "75 s" },
+                { ex: "vpull", level: 1, sets: 3, reps: "10–12", rest: "90 s" },
+                { ex: "carry", level: 0, sets: 3, reps: "40 m" }
+              ],
+              cooldown: [
+                { ex: "pecstretch", level: 1, sets: 1, reps: "30 s / side" },
+                { ex: "childs", level: 1, sets: 1, reps: "45 s" }
+              ]
+            },
+            {
+              name: "Lower A — Squat emphasis",
+              warmup: [
+                { ex: "glutebridge", level: 2, sets: 2, reps: "8 / side" },
+                { ex: "ankle", level: 1, sets: 1, reps: "8 / side" },
+                { ex: "wgs", level: 1, sets: 1, reps: "4 / side" }
+              ],
+              prehab: [
+                { ex: "calf", level: 2, sets: 3, reps: "12 / side" }
+              ],
+              main: [
+                { ex: "squat", level: 2, sets: 3, reps: "10–12", rest: "90 s" },
+                { ex: "hipthrust", level: 2, sets: 3, reps: "12–15", rest: "75 s" },
+                { ex: "splitsquat", level: 2, sets: 3, reps: "10 / leg", rest: "75 s" },
+                { ex: "hollow", level: 0, sets: 3, reps: "20–30 s" }
+              ],
+              cooldown: [
+                { ex: "couch", level: 1, sets: 1, reps: "45 s / side" },
+                { ex: "hammy", level: 1, sets: 1, reps: "40 s / side" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "Phase 2 — Tension & load",
+          weeks: "4–6",
+          focus: "Nudge loads up and reps down into the 8–10 range on the main lifts, with slightly longer rests, while keeping a couple of higher-rep 'pump' moves.",
+          scheme: { intensity: "Higher (1–2 RIR)", sets: "3–4", reps: "8–10 (mains) · 12–15 (pump)", rest: "90 s–2 min", tempo: "3-1-1" },
+          progression: "Add load on the mains while holding 8–10 reps. Keep the last set of each exercise honest — 0–1 RIR is fine here.",
+          workouts: [
+            {
+              name: "Upper B — Pull emphasis",
+              warmup: [
+                { ex: "dislocate", level: 2, sets: 2, reps: "10" },
+                { ex: "facepull", level: 2, sets: 2, reps: "15" }
+              ],
+              prehab: [
+                { ex: "extrot", level: 2, sets: 2, reps: "12" },
+                { ex: "wristext", level: 2, sets: 2, reps: "12" }
+              ],
+              main: [
+                { ex: "vpull", level: 3, sets: 4, reps: "8–10", rest: "2 min" },
+                { ex: "hpull", level: 3, sets: 3, reps: "8–10", rest: "90 s" },
+                { ex: "vpush", level: 3, sets: 3, reps: "8–10", rest: "90 s" },
+                { ex: "hpush", level: 2, sets: 3, reps: "12–15", rest: "75 s" }
+              ],
+              cooldown: [
+                { ex: "childs", level: 2, sets: 1, reps: "45 s" },
+                { ex: "pecstretch", level: 1, sets: 1, reps: "30 s / side" }
+              ]
+            },
+            {
+              name: "Lower B — Hinge emphasis",
+              warmup: [
+                { ex: "glutebridge", level: 2, sets: 2, reps: "8 / side" },
+                { ex: "ankle", level: 2, sets: 1, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "nordic", level: 1, sets: 3, reps: "6" },
+                { ex: "copenhagen", level: 1, sets: 2, reps: "20 s / side" }
+              ],
+              main: [
+                { ex: "hinge", level: 2, sets: 4, reps: "8–10", rest: "2 min" },
+                { ex: "hipthrust", level: 3, sets: 3, reps: "10–12", rest: "90 s" },
+                { ex: "lateral", level: 2, sets: 3, reps: "8 / side", rest: "75 s" },
+                { ex: "legraise", level: 1, sets: 3, reps: "10–12" }
+              ],
+              cooldown: [
+                { ex: "pigeon", level: 1, sets: 1, reps: "45 s / side" },
+                { ex: "hammy", level: 1, sets: 1, reps: "40 s / side" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "Phase 3 — Peak pump & deload",
+          weeks: "7–8",
+          focus: "Week 7 is a high-effort 'metabolite' week — a touch more volume, shorter rests, big pumps. Week 8 deloads: cut the sets roughly in half and keep it light so growth catches up.",
+          scheme: { intensity: "Wk7 high · Wk8 easy", sets: "Wk7: 3–4 · Wk8: 2", reps: "12–20 (Wk7) · 10 easy (Wk8)", rest: "45–60 s (Wk7)", tempo: "2-0-1" },
+          progression: "Week 7: chase reps and a strong pump, short rests. Week 8: light and smooth, leave the gym fresh. Take progress photos or measurements at the end.",
+          workouts: [
+            {
+              name: "Full-body pump A",
+              warmup: [
+                { ex: "catcow", level: 1, sets: 1, reps: "6" },
+                { ex: "glutebridge", level: 2, sets: 2, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "facepull", level: 2, sets: 2, reps: "15" }
+              ],
+              main: [
+                { ex: "squat", level: 2, sets: 3, reps: "15–20", rest: "45 s" },
+                { ex: "hpush", level: 2, sets: 3, reps: "15", rest: "45 s" },
+                { ex: "hpull", level: 2, sets: 3, reps: "15", rest: "45 s" },
+                { ex: "hollow", level: 1, sets: 3, reps: "30 s" }
+              ],
+              cooldown: [
+                { ex: "childs", level: 1, sets: 1, reps: "45 s" },
+                { ex: "breath", level: 1, sets: 1, reps: "2 min" }
+              ]
+            },
+            {
+              name: "Full-body pump B",
+              warmup: [
+                { ex: "dislocate", level: 1, sets: 2, reps: "10" },
+                { ex: "ankle", level: 1, sets: 1, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "extrot", level: 1, sets: 2, reps: "15" }
+              ],
+              main: [
+                { ex: "hipthrust", level: 2, sets: 3, reps: "15–20", rest: "45 s" },
+                { ex: "vpull", level: 1, sets: 3, reps: "12–15", rest: "45 s" },
+                { ex: "vpush", level: 2, sets: 3, reps: "12–15", rest: "45 s" },
+                { ex: "lateral", level: 1, sets: 3, reps: "10 / side" }
+              ],
+              cooldown: [
+                { ex: "pigeon", level: 1, sets: 1, reps: "45 s / side" },
+                { ex: "breath", level: 1, sets: 1, reps: "2 min" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    /* =================================================================
+       6) HOME MINIMALIST STRENGTH
+       ================================================================= */
+    {
+      id: "home-minimalist",
+      title: "Home Minimalist Strength",
+      tagline: "Get strong at home with a band, a bench and one pair of dumbbells.",
+      goal: "strength",
+      level: "beginner",
+      weeks: 6,
+      daysPerWeek: 3,
+      sessionMinutes: 40,
+      equipment: "One resistance band, one pair of dumbbells (or a loaded backpack), and a sturdy chair, bench or step. That's it.",
+      equipmentTier: "minimal",
+      tier: "essential",
+      audience: "Anyone training at home or travelling with almost no gear, who still wants a real, progressive full-body strength plan — not a random circuit.",
+      description:
+        "You don't need a gym to get stronger — you need a plan and a way to keep making things harder. This six-week program uses just a band, a pair of dumbbells and something to sit on, and it still progresses properly: first you build a base, then you make each move tougher by slowing it down, adding reps, and stepping up to harder variations. Three efficient full-body sessions a week, each with a warm-up, joint-care work, the main lifts and a cool-down.",
+      justification: [
+        { plain: "You don't need heavy machines to build strength — you need enough challenge. With limited weight, we create it by using harder exercise variations, slower tempos and higher reps taken close to failure, which grows strength and muscle much like heavy loads do.",
+          cite: "Schoenfeld BJ, et al. Effects of low- vs. high-load resistance training on muscle strength and hypertrophy in well-trained men. J Strength Cond Res. 2015." },
+        { plain: "Progressive overload still rules at home: because you can't always add weight, you add reps, sets, range or difficulty instead. That planned 'a little more' is what keeps you adapting.",
+          cite: "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults. Med Sci Sports Exerc. 2009." },
+        { plain: "Full-body sessions three times a week hit each muscle often enough to progress, and fit real life better than long gym splits — which matters, because the plan you actually finish is the one that works.",
+          cite: "Schoenfeld BJ, Grgic J, Krieger J. How many times per week should a muscle be trained? A meta-analysis. J Sports Sci. 2019." }
+      ],
+      howto: [
+        { name: "Making it harder without more weight", text: "Use the ◀ / ▶ buttons to pick a tougher variation (e.g. push-up → harder angle → one-arm progressions), slow the lowering, add reps, or shorten your rest. Any of these overloads the muscle." },
+        { name: "Tempo", text: "3-0-1 means 3 seconds down, no pause, 1 second up. With light weights, slowing the lowering is your best friend — it makes an easy load feel much harder." },
+        { name: "RIR (reps in reserve)", text: "Stop with 1–3 solid reps left. With bodyweight and bands you can safely push the last set close to failure to make up for the lighter load." },
+        { name: "Bands", text: "Resistance grows as the band stretches, so the top of each rep is hardest. Anchor it safely (a closed door, a rack, under your feet) and control the return — don't let it snap back." }
+      ],
+      phases: [
+        {
+          name: "Phase 1 — Build the base",
+          weeks: "1–3",
+          focus: "Learn the variations and build capacity with moderate reps and full control. Keep 2–3 reps in reserve.",
+          scheme: { intensity: "Moderate", sets: "2–3", reps: "10–15", rest: "60–75 s", tempo: "3-0-1" },
+          progression: "Add reps weekly; when a move feels easy at the top of the range, step up one level with ▶ or slow the tempo further.",
+          workouts: [
+            {
+              name: "Day 1 — Full body A",
+              warmup: [
+                { ex: "catcow", level: 1, sets: 1, reps: "6" },
+                { ex: "glutebridge", level: 1, sets: 2, reps: "10" },
+                { ex: "dislocate", level: 0, sets: 2, reps: "10" }
+              ],
+              prehab: [
+                { ex: "facepull", level: 0, sets: 2, reps: "15" }
+              ],
+              main: [
+                { ex: "squat", level: 2, sets: 3, reps: "12–15", rest: "75 s" },
+                { ex: "hpush", level: 1, sets: 3, reps: "8–12", rest: "60 s" },
+                { ex: "hpull", level: 0, sets: 3, reps: "12–15", rest: "60 s" },
+                { ex: "plank", level: 1, sets: 2, reps: "20–30 s" }
+              ],
+              cooldown: [
+                { ex: "couch", level: 0, sets: 1, reps: "40 s / side" },
+                { ex: "childs", level: 1, sets: 1, reps: "45 s" }
+              ]
+            },
+            {
+              name: "Day 2 — Full body B",
+              warmup: [
+                { ex: "legswing", level: 0, sets: 1, reps: "10 / direction" },
+                { ex: "ankle", level: 1, sets: 1, reps: "8 / side" },
+                { ex: "glutebridge", level: 1, sets: 2, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "extrot", level: 1, sets: 2, reps: "15" }
+              ],
+              main: [
+                { ex: "hinge", level: 2, sets: 3, reps: "12", rest: "75 s" },
+                { ex: "vpush", level: 1, sets: 3, reps: "8–10", rest: "60 s" },
+                { ex: "splitsquat", level: 1, sets: 3, reps: "8 / leg", rest: "60 s" },
+                { ex: "birddog", level: 1, sets: 2, reps: "8 / side" }
+              ],
+              cooldown: [
+                { ex: "hammy", level: 0, sets: 1, reps: "40 s / side" },
+                { ex: "pecstretch", level: 0, sets: 1, reps: "30 s / side" }
+              ]
+            },
+            {
+              name: "Day 3 — Full body C",
+              warmup: [
+                { ex: "catcow", level: 1, sets: 1, reps: "6" },
+                { ex: "wgs", level: 1, sets: 1, reps: "4 / side" }
+              ],
+              prehab: [
+                { ex: "calf", level: 1, sets: 2, reps: "15 / side" }
+              ],
+              main: [
+                { ex: "hipthrust", level: 1, sets: 3, reps: "15", rest: "60 s" },
+                { ex: "hpull", level: 0, sets: 3, reps: "15", rest: "60 s" },
+                { ex: "hpush", level: 0, sets: 3, reps: "12–15", rest: "60 s" },
+                { ex: "carry", level: 0, sets: 3, reps: "40 m" }
+              ],
+              cooldown: [
+                { ex: "pigeon", level: 0, sets: 1, reps: "40 s / side" },
+                { ex: "breath", level: 0, sets: 1, reps: "2 min" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "Phase 2 — Overload",
+          weeks: "4–6",
+          focus: "Step up to harder variations and slower tempos, push closer to failure, and trim rest a little. This is where limited equipment still delivers real strength.",
+          scheme: { intensity: "Challenging (1–2 RIR)", sets: "3", reps: "8–12", rest: "45–75 s", tempo: "4-0-1" },
+          progression: "Each week, harder variation OR more reps OR less rest — pick one and beat last week. Retest a couple of moves (max push-ups, longest plank) at the end.",
+          workouts: [
+            {
+              name: "Day 1 — Full body A+",
+              warmup: [
+                { ex: "dislocate", level: 1, sets: 2, reps: "10" },
+                { ex: "glutebridge", level: 2, sets: 2, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "facepull", level: 1, sets: 2, reps: "15" }
+              ],
+              main: [
+                { ex: "splitsquat", level: 2, sets: 3, reps: "8 / leg", rest: "60 s" },
+                { ex: "hpush", level: 1, sets: 3, reps: "8–12", rest: "60 s" },
+                { ex: "hpull", level: 1, sets: 3, reps: "10–12", rest: "60 s" },
+                { ex: "hollow", level: 0, sets: 3, reps: "20–30 s" }
+              ],
+              cooldown: [
+                { ex: "couch", level: 1, sets: 1, reps: "45 s / side" },
+                { ex: "childs", level: 1, sets: 1, reps: "45 s" }
+              ]
+            },
+            {
+              name: "Day 2 — Full body B+",
+              warmup: [
+                { ex: "legswing", level: 1, sets: 1, reps: "10 / direction" },
+                { ex: "ankle", level: 2, sets: 1, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "birddog", level: 2, sets: 2, reps: "8 / side" }
+              ],
+              main: [
+                { ex: "hinge", level: 2, sets: 3, reps: "10", rest: "75 s" },
+                { ex: "vpush", level: 2, sets: 3, reps: "8–10", rest: "60 s" },
+                { ex: "lateral", level: 1, sets: 3, reps: "8 / side", rest: "60 s" },
+                { ex: "sideplank", level: 1, sets: 2, reps: "25–30 s / side" }
+              ],
+              cooldown: [
+                { ex: "hammy", level: 1, sets: 1, reps: "40 s / side" },
+                { ex: "pecstretch", level: 1, sets: 1, reps: "30 s / side" }
+              ]
+            },
+            {
+              name: "Day 3 — Full body C+",
+              warmup: [
+                { ex: "catcow", level: 2, sets: 1, reps: "6" },
+                { ex: "glutebridge", level: 2, sets: 2, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "calf", level: 2, sets: 3, reps: "12 / side" }
+              ],
+              main: [
+                { ex: "hipthrust", level: 2, sets: 3, reps: "12", rest: "60 s" },
+                { ex: "vpull", level: 1, sets: 3, reps: "8–10", rest: "75 s" },
+                { ex: "hpush", level: 1, sets: 3, reps: "10–12", rest: "60 s" },
+                { ex: "carry", level: 1, sets: 3, reps: "30 m / side" }
+              ],
+              cooldown: [
+                { ex: "pigeon", level: 1, sets: 1, reps: "45 s / side" },
+                { ex: "breath", level: 1, sets: 1, reps: "2 min" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    /* =================================================================
+       7) MOBILITY & LONGEVITY
+       ================================================================= */
+    {
+      id: "mobility-longevity",
+      title: "Mobility & Longevity",
+      tagline: "Move better, feel looser, and keep your joints happy for the long haul.",
+      goal: "mobility",
+      level: "beginner",
+      weeks: 4,
+      daysPerWeek: 3,
+      sessionMinutes: 30,
+      equipment: "Just your bodyweight and a resistance band. A mat is nice to have.",
+      equipmentTier: "minimal",
+      tier: "essential",
+      audience: "Anyone who sits a lot, feels stiff, is easing back in after time off, or wants a gentle plan to build usable range of motion and joint control alongside their main training.",
+      description:
+        "Flexibility is being able to reach a position; mobility is being strong and in control there — and control is what protects you. This four-week plan blends gentle mobility flows with light strength through a full range of motion and targeted joint care. It's low-intensity by design: something you can do on rest days, in the morning, or as a warm-up habit. Three short sessions a week, each with a gentle warm-up, joint-care work, the main mobility-and-control block, and a relaxing cool-down.",
+      justification: [
+        { plain: "Training strength through a full range of motion improves flexibility about as well as stretching does — with the bonus that you also get stronger and more controlled in those end ranges.",
+          cite: "Afonso J, et al. Strength training versus stretching for improving range of motion: a systematic review and meta-analysis. Healthcare. 2021." },
+        { plain: "It's not just about being bendy — being strong near your end range is what makes new mobility stick and helps protect the joint. So we load the stretched positions, not just hold them.",
+          cite: "O'Sullivan K, McAuliffe S, DeBurca N. The effects of eccentric training on lower-limb flexibility: a systematic review. Br J Sports Med. 2012." },
+        { plain: "Regular mobility and light resistance work supports joint health and everyday function, and helps you keep moving well as you age — a core reason to include it every week.",
+          cite: "Garber CE, et al. ACSM position stand: Quantity and Quality of Exercise, including flexibility and neuromotor work. Med Sci Sports Exerc. 2011." }
+      ],
+      howto: [
+        { name: "Mobility vs. flexibility", text: "Flexibility is passive range (how far you can be moved into a stretch). Mobility is active control of that range. This plan trains control, so the range you gain is range you can actually use." },
+        { name: "Move slowly, breathe", text: "Mobility work responds to calm, controlled effort. Move slowly, breathe out as you deepen a position, and never push into sharp pain — mild tension is the target." },
+        { name: "End-range holds", text: "When a move says to pause at the hardest point, that brief hold under tension is what teaches your body to own the new range. A few seconds is plenty." },
+        { name: "Consistency over intensity", text: "Little and often beats occasional and hard. Doing these short sessions regularly is what changes how you move — no single session needs to be tough." }
+      ],
+      phases: [
+        {
+          name: "Phase 1 — Open & control",
+          weeks: "1–2",
+          focus: "Restore range in the big stiff areas — hips, ankles, mid-back and shoulders — and start adding gentle control at end range.",
+          scheme: { intensity: "Gentle", sets: "2", reps: "6–10 slow reps / 30–45 s holds", rest: "as needed", tempo: "slow" },
+          progression: "Ease a little deeper each session as it opens up. Add a second round when a flow feels easy.",
+          workouts: [
+            {
+              name: "Session A — Hips & lower body",
+              warmup: [
+                { ex: "catcow", level: 1, sets: 1, reps: "8 slow" },
+                { ex: "legswing", level: 0, sets: 1, reps: "10 / direction" }
+              ],
+              prehab: [
+                { ex: "glutebridge", level: 1, sets: 2, reps: "10" },
+                { ex: "calf", level: 1, sets: 2, reps: "12 / side" }
+              ],
+              main: [
+                { ex: "ankle", level: 1, sets: 2, reps: "8 / side", note: "Pause 2 s at the deepest point." },
+                { ex: "lateral", level: 1, sets: 2, reps: "6 / side", tempo: "slow", note: "Sit into each hip slowly for range." },
+                { ex: "slrdl", level: 0, sets: 2, reps: "6 / leg", note: "Control the hinge — this is balance + hamstring range." },
+                { ex: "hipthrust", level: 0, sets: 2, reps: "10", note: "Pause and squeeze at the top." }
+              ],
+              cooldown: [
+                { ex: "pigeon", level: 0, sets: 1, reps: "45 s / side" },
+                { ex: "couch", level: 0, sets: 1, reps: "45 s / side" }
+              ]
+            },
+            {
+              name: "Session B — Spine & shoulders",
+              warmup: [
+                { ex: "catcow", level: 2, sets: 1, reps: "8" },
+                { ex: "wgs", level: 1, sets: 1, reps: "4 / side" }
+              ],
+              prehab: [
+                { ex: "facepull", level: 0, sets: 2, reps: "15" },
+                { ex: "extrot", level: 1, sets: 2, reps: "12" }
+              ],
+              main: [
+                { ex: "tspine", level: 1, sets: 2, reps: "8 / side", note: "Open slowly, follow your hand with your eyes." },
+                { ex: "dislocate", level: 1, sets: 2, reps: "8", note: "Wide grip — never force it." },
+                { ex: "birddog", level: 1, sets: 2, reps: "8 / side", note: "Reach long for control, not speed." },
+                { ex: "vpull", level: 0, sets: 2, reps: "10", note: "Light — feel the full stretch and pull." }
+              ],
+              cooldown: [
+                { ex: "childs", level: 2, sets: 1, reps: "45–60 s" },
+                { ex: "pecstretch", level: 1, sets: 1, reps: "30 s / side" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "Phase 2 — Strengthen the range",
+          weeks: "3–4",
+          focus: "Add a little load and longer holds to lock in the new range so it lasts. Slightly deeper positions with real control.",
+          scheme: { intensity: "Gentle–moderate", sets: "2–3", reps: "8–10 / 45–60 s holds", rest: "as needed", tempo: "slow + pause" },
+          progression: "Add a light load, a deeper position, or a longer end-range pause. Keep it controlled and pain-free.",
+          workouts: [
+            {
+              name: "Session A+ — Loaded lower mobility",
+              warmup: [
+                { ex: "legswing", level: 1, sets: 1, reps: "10 / direction" },
+                { ex: "ankle", level: 2, sets: 1, reps: "8 / side" }
+              ],
+              prehab: [
+                { ex: "copenhagen", level: 0, sets: 2, reps: "20 s / side" },
+                { ex: "calf", level: 2, sets: 2, reps: "12 / side" }
+              ],
+              main: [
+                { ex: "squat", level: 1, sets: 3, reps: "8", tempo: "4-2-1", note: "Slow, deep, paused at the bottom for control." },
+                { ex: "lateral", level: 2, sets: 2, reps: "6 / side", note: "Cossack — sink deeper as you warm up." },
+                { ex: "slrdl", level: 1, sets: 2, reps: "8 / leg" },
+                { ex: "hollow", level: 0, sets: 2, reps: "20 s" }
+              ],
+              cooldown: [
+                { ex: "pigeon", level: 1, sets: 1, reps: "60 s / side" },
+                { ex: "hammy", level: 0, sets: 1, reps: "45 s / side" }
+              ]
+            },
+            {
+              name: "Session B+ — Loaded upper mobility",
+              warmup: [
+                { ex: "catcow", level: 2, sets: 1, reps: "8" },
+                { ex: "dislocate", level: 2, sets: 2, reps: "8" }
+              ],
+              prehab: [
+                { ex: "extrot", level: 2, sets: 2, reps: "12" },
+                { ex: "birddog", level: 2, sets: 2, reps: "8 / side" }
+              ],
+              main: [
+                { ex: "tspine", level: 2, sets: 2, reps: "8 / side" },
+                { ex: "vpush", level: 0, sets: 2, reps: "8", tempo: "3-1-2", note: "Light overhead press for shoulder range + control." },
+                { ex: "hpull", level: 0, sets: 2, reps: "12", note: "Full stretch each rep." },
+                { ex: "sideplank", level: 1, sets: 2, reps: "20–30 s / side" }
+              ],
+              cooldown: [
+                { ex: "childs", level: 2, sets: 1, reps: "60 s" },
+                { ex: "breath", level: 1, sets: 1, reps: "2–3 min" }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ];
 

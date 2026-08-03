@@ -47,7 +47,8 @@
   var TIER_LABEL = { free: "Free", essential: "Essential", complete: "Complete", coach: "Coach / Pro" };
   var GOAL_LABEL = {
     foundation: "Foundations", strength: "Strength", power: "Power & performance",
-    conditioning: "Conditioning", endurance: "Endurance", mobility: "Mobility"
+    conditioning: "Conditioning", endurance: "Endurance", mobility: "Mobility",
+    hypertrophy: "Build muscle"
   };
   var LEVEL_LABEL = { beginner: "Beginner", intermediate: "Intermediate", advanced: "Advanced" };
 
@@ -95,7 +96,7 @@
       '</article>';
   }
   function goalEmoji(g) {
-    return { foundation: "🧱", strength: "🏋️", power: "⚡", conditioning: "❤️", endurance: "🏃", mobility: "🧘" }[g] || "💪";
+    return { foundation: "🧱", strength: "🏋️", power: "⚡", conditioning: "❤️", endurance: "🏃", mobility: "🧘", hypertrophy: "💪" }[g] || "💪";
   }
 
   function renderLibrary() {

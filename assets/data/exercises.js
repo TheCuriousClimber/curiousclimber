@@ -411,6 +411,141 @@
         { name: "Box breathing (4-4-4-4)", note: "Equal in-hold-out-hold.", q: "box breathing exercise" },
         { name: "Extended-exhale breathing (4-8)", note: "Inhale 4, exhale 8 to calm down.", q: "extended exhale breathing" }
       ]
+    },
+
+    /* ================= WARM-UP (added) ================= */
+    "tspine": {
+      id: "tspine", name: "Thoracic Rotation (Open Book)", section: "warmup", pattern: "Upper-back mobility",
+      equipment: ["bodyweight"], tempo: "—",
+      cues: ["Rotate from the mid-back, not the low back", "Follow your hand with your eyes", "Exhale as you open"],
+      levels: [
+        { name: "Seated thoracic rotation", note: "Easiest — rotate in a chair, arms crossed.", q: "seated thoracic rotation" },
+        { name: "Open-book stretch (side-lying)", note: "Knees stacked, peel the top arm open.", q: "open book thoracic rotation" },
+        { name: "Quadruped thread-the-needle", note: "Reach under and then rotate up and open.", q: "thread the needle stretch" }
+      ]
+    },
+    "ankle": {
+      id: "ankle", name: "Ankle Mobility (Knee-to-Wall)", section: "warmup", pattern: "Ankle mobility",
+      equipment: ["bodyweight"], tempo: "—",
+      cues: ["Drive the knee over the toes", "Keep the heel glued down", "Small, gentle reps"],
+      levels: [
+        { name: "Seated ankle circles / pumps", note: "Gentle entry with no load.", q: "ankle mobility drills" },
+        { name: "Knee-to-wall dorsiflexion", note: "Half-kneel, drive the knee past the toes.", q: "knee to wall ankle mobility" },
+        { name: "Loaded ankle rock (deep squat)", note: "Rock into a deep squat to open both ankles.", q: "deep squat ankle mobility" }
+      ]
+    },
+
+    /* ================= PREHAB (added) ================= */
+    "birddog": {
+      id: "birddog", name: "Bird Dog", section: "prehab", pattern: "Core / anti-rotation",
+      equipment: ["bodyweight"], tempo: "2-2-2",
+      cues: ["Reach long, don't just lift", "Keep the hips level — no twisting", "Move slow and controlled"],
+      levels: [
+        { name: "Bird dog — arm only", note: "Master a stable back with just the arm.", q: "bird dog arm only" },
+        { name: "Bird dog (opposite arm + leg)", note: "Classic — reach and hold briefly.", q: "bird dog exercise" },
+        { name: "Bird dog with band / elbow-to-knee", note: "Add a crunch or band for more demand.", q: "bird dog crunch exercise" }
+      ]
+    },
+    "copenhagen": {
+      id: "copenhagen", name: "Copenhagen Plank (adductor)", section: "prehab", pattern: "Groin / adductor health",
+      equipment: ["bodyweight"], tempo: "—",
+      cues: ["Squeeze the top leg into the bench", "Long line, hips lifted", "Build time slowly"],
+      levels: [
+        { name: "Adductor squeeze (ball)", note: "Simplest — squeeze a ball between the knees.", q: "adductor squeeze exercise" },
+        { name: "Short-lever Copenhagen (knee on bench)", note: "Bottom knee down shortens the lever.", q: "short lever copenhagen plank" },
+        { name: "Full Copenhagen plank (foot on bench)", note: "Top foot on the bench — advanced.", q: "copenhagen plank" }
+      ]
+    },
+    "dislocate": {
+      id: "dislocate", name: "Band Shoulder Dislocates", section: "prehab", pattern: "Shoulder mobility",
+      equipment: ["band"], tempo: "—",
+      cues: ["Wide grip — never force it", "Slow arc overhead and back", "Stop at any pinch"],
+      levels: [
+        { name: "Wall slides", note: "Forearms on a wall, slide up and down.", q: "wall slides shoulder" },
+        { name: "Wide-grip band pass-through", note: "Take a band over and behind you.", q: "band shoulder dislocates" },
+        { name: "Narrower-grip pass-through", note: "Close the grip a little as mobility improves.", q: "shoulder pass through mobility" }
+      ]
+    },
+
+    /* ================= MAIN (added) ================= */
+    "hipthrust": {
+      id: "hipthrust", name: "Hip Thrust / Bridge", section: "main", pattern: "Hinge (glute)",
+      equipment: ["bodyweight", "dumbbell", "barbell"], tempo: "2-1-2",
+      cues: ["Chin tucked, ribs down", "Squeeze the glutes at the top", "Shins vertical at lockout"],
+      levels: [
+        { name: "Feet-elevated glute bridge", note: "Floor bridge — friendliest version.", q: "glute bridge floor" },
+        { name: "Shoulder-elevated hip thrust", note: "Upper back on a bench, bodyweight.", q: "bodyweight hip thrust bench" },
+        { name: "Dumbbell hip thrust", note: "Add a dumbbell across the hips.", q: "dumbbell hip thrust" },
+        { name: "Barbell hip thrust", note: "Highest loading for the glutes.", q: "barbell hip thrust" }
+      ]
+    },
+    "lateral": {
+      id: "lateral", name: "Lateral Lunge / Cossack", section: "main", pattern: "Single-leg (frontal plane)",
+      equipment: ["bodyweight", "dumbbell"], tempo: "3-0-1",
+      cues: ["Sit into the bent hip", "Keep the other leg straight", "Push the floor away to return"],
+      levels: [
+        { name: "Assisted lateral lunge", note: "Hold a rack/TRX and step wide.", q: "assisted lateral lunge" },
+        { name: "Lateral lunge", note: "Bodyweight, sit into one hip.", q: "lateral lunge exercise" },
+        { name: "Cossack squat", note: "Deeper range, heel stays down.", q: "cossack squat" },
+        { name: "Goblet Cossack squat", note: "Hold a weight at the chest.", q: "goblet cossack squat" }
+      ]
+    },
+    "hollow": {
+      id: "hollow", name: "Hollow-Body Hold", section: "main", pattern: "Core / anti-extension",
+      equipment: ["bodyweight"], tempo: "—",
+      cues: ["Press the low back flat to the floor", "Long from fingers to toes", "Breathe through it"],
+      levels: [
+        { name: "Tuck hollow hold", note: "Knees tucked — easiest.", q: "tuck hollow hold" },
+        { name: "Single-leg hollow", note: "One leg extended at a time.", q: "hollow hold single leg" },
+        { name: "Full hollow-body hold", note: "Arms and legs long — advanced.", q: "hollow body hold" },
+        { name: "Hollow rocks", note: "Add a small rocking motion.", q: "hollow body rocks" }
+      ]
+    },
+
+    /* ================= POWER (added) ================= */
+    "pushpress": {
+      id: "pushpress", name: "Push Press (upper-body power)", section: "power", pattern: "Power (vertical push)",
+      equipment: ["dumbbell", "barbell"], tempo: "explosive",
+      cues: ["Small dip, then drive with the legs", "Punch the weight overhead fast", "Reset each rep"],
+      levels: [
+        { name: "Medicine-ball push press (into wall)", note: "Learn the dip-drive safely.", q: "medicine ball push press" },
+        { name: "Dumbbell push press", note: "Dip and drive two dumbbells overhead.", q: "dumbbell push press" },
+        { name: "Barbell push press", note: "Heaviest, most powerful version.", q: "barbell push press" }
+      ]
+    },
+
+    /* ================= CONDITIONING (added) ================= */
+    "jumprope": {
+      id: "jumprope", name: "Jump Rope", section: "conditioning", pattern: "Conditioning / footwork",
+      equipment: ["jump-rope", "bodyweight"], tempo: "—",
+      cues: ["Small, quick bounces", "Turn the rope from the wrists", "Land soft on the balls of the feet"],
+      levels: [
+        { name: "No-rope 'phantom' bounces", note: "Groove the timing without the rope.", q: "jump rope beginner no rope" },
+        { name: "Steady two-foot skips", note: "Continuous basic bounce.", q: "jump rope basic bounce" },
+        { name: "Intervals / double-unders", note: "Fast intervals or double-unders for a big engine hit.", q: "jump rope double unders" }
+      ]
+    },
+    "sled": {
+      id: "sled", name: "Sled / Loaded Push", section: "conditioning", pattern: "Conditioning (low-impact)",
+      equipment: ["sled", "bodyweight"], tempo: "—",
+      cues: ["Low, driving angle", "Powerful, full leg strides", "Joint-friendly — no impact"],
+      levels: [
+        { name: "Uphill / incline walk", note: "No sled needed — a brisk incline works.", q: "incline treadmill walk conditioning" },
+        { name: "Sled push", note: "Drive a loaded sled for distance.", q: "sled push exercise" },
+        { name: "Heavy sled push/drag intervals", note: "Alternate hard pushes with walk-back rest.", q: "heavy sled push intervals" }
+      ]
+    },
+
+    /* ================= COOL-DOWN (added) ================= */
+    "childs": {
+      id: "childs", name: "Child's Pose / Lat Stretch", section: "cooldown", pattern: "Back & lat flexibility",
+      equipment: ["bodyweight"], tempo: "—",
+      cues: ["Sink the hips back toward the heels", "Reach the fingertips long", "Breathe into the ribs"],
+      levels: [
+        { name: "Supported child's pose (on a bench)", note: "Hands on a bench if the floor is tough.", q: "supported childs pose" },
+        { name: "Child's pose", note: "Classic kneeling reach-back.", q: "childs pose stretch" },
+        { name: "Side-bent lat stretch", note: "Walk the hands to one side to bias the lats.", q: "childs pose lat stretch side" }
+      ]
     }
   };
 
