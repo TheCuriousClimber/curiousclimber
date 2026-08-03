@@ -27,6 +27,38 @@
    dead links to maintain. To pin a specific curated video instead, give a
    level a `yt` property with a YouTube ID (e.g. yt:"dQw4w9WgXcQ") and the
    engine will link straight to it. See README.
+
+   CURATED (`yt`) VIDEOS — the 27 most-used variations are pinned to
+   specific tutorials, sourced from current web search (titles below for
+   auditing; please spot-check them, then swap any you'd rather feature —
+   removing a `yt` simply reverts that level to the search fallback):
+     -CiWQ2IvY34 World's Greatest Stretch (Squat University)
+     iKQ-DHgti20 Cat–Cow Stretch (PartnerMD)
+     difYoBtZi2s Leg Swings
+     RESEoAnLEmk Glute Bridge March (Exercise Library)
+     b1zTCyGJXCQ Single-Leg Glute Bridge
+     KRmT2td4uQA Band External Rotation (rotator cuff)
+     smSSXITNpCI Band Pull-Apart
+     eTCBSFlCJ_s Face Pull (NASM)
+     gCESNsDsbqk Goblet Squat
+     VPhhE6bBzZE Bulgarian Split Squat
+     aa57T45iFSE Dumbbell Romanian Deadlift (NASM)
+     Z6gcRfPNcZo Barbell Deadlift (NASM)
+     J-gWN5hYwRU Dumbbell Bench Press
+     WDIpL0pjun0 Push-Up (NASM)
+     bj53-0DYKFo Standing Dumbbell Overhead Press
+     W3fZzhw87ak Single-Arm Dumbbell Row
+     aNUSgyWRJYA Pull-Ups for Beginners
+     4yE-XGDWJPg Band-Assisted Pull-Ups
+     wCBOqf-HrTI Forearm Plank
+     lLAw6fUccKA Farmer's Carry
+     29OfN4ztW_g Dumbbell Hip Thrust
+     1Qi0NQW89Oc Kettlebell Swing (two-arm)
+     IphGZ8OlfYg Single-Leg Calf Raise
+     -rsIS-wl-ig Couch Stretch
+     LVY692zJK0A Standing Hamstring Stretch
+     eGqbnFII3J8 Supine Figure-4 Stretch
+     CEQMx4zFwYs Doorway Pec Stretch
    ===================================================================== */
 (function () {
   "use strict";
@@ -40,7 +72,7 @@
       cues: ["Move slowly and breathe", "Long spine", "Feel a stretch, never pain"],
       levels: [
         { name: "Kneeling hip-flexor rock", note: "Easiest — no floor-to-stand transition.", q: "kneeling hip flexor stretch" },
-        { name: "World's Greatest Stretch", note: "Lunge, elbow to instep, rotate open.", q: "worlds greatest stretch" },
+        { name: "World's Greatest Stretch", note: "Lunge, elbow to instep, rotate open.", yt: "-CiWQ2IvY34", q: "worlds greatest stretch" },
         { name: "World's Greatest Stretch w/ overhead reach", note: "Add a tall reach to load the thoracic spine.", q: "worlds greatest stretch with rotation" }
       ]
     },
@@ -50,7 +82,7 @@
       cues: ["Move one segment at a time", "Match the breath to the motion"],
       levels: [
         { name: "Seated cat–cow", note: "Do it in a chair if the floor is hard to get to.", q: "seated cat cow stretch" },
-        { name: "Quadruped cat–cow", note: "Classic on hands and knees.", q: "cat cow stretch" },
+        { name: "Quadruped cat–cow", note: "Classic on hands and knees.", yt: "iKQ-DHgti20", q: "cat cow stretch" },
         { name: "Cat–cow to child's pose flow", note: "Add a rock-back to open the hips.", q: "cat cow to childs pose flow" }
       ]
     },
@@ -60,7 +92,7 @@
       cues: ["Hold something for balance", "Start small, grow the range"],
       levels: [
         { name: "Supported leg swings (front/back)", note: "Hold a wall or rack.", q: "leg swings warm up" },
-        { name: "Front-back + side-side swings", note: "Add lateral swings for the hips.", q: "dynamic leg swings side to side" }
+        { name: "Front-back + side-side swings", note: "Add lateral swings for the hips.", yt: "difYoBtZi2s", q: "dynamic leg swings side to side" }
       ]
     },
     "inchworm": {
@@ -79,8 +111,8 @@
       cues: ["Squeeze the glutes, not the low back", "Ribs down"],
       levels: [
         { name: "Two-leg glute bridge", note: "Both feet down, squeeze at the top.", q: "glute bridge exercise" },
-        { name: "Glute bridge march", note: "Lift one knee at a time without dropping the hips.", q: "glute bridge march" },
-        { name: "Single-leg glute bridge", note: "One foot down — big step up in demand.", q: "single leg glute bridge" }
+        { name: "Glute bridge march", note: "Lift one knee at a time without dropping the hips.", yt: "RESEoAnLEmk", q: "glute bridge march" },
+        { name: "Single-leg glute bridge", note: "One foot down — big step up in demand.", yt: "b1zTCyGJXCQ", q: "single leg glute bridge" }
       ]
     },
 
@@ -91,7 +123,7 @@
       cues: ["Elbow pinned to your side", "Rotate from the shoulder, slow and controlled"],
       levels: [
         { name: "Side-lying external rotation (no weight)", note: "Groove the pattern first.", q: "side lying external rotation" },
-        { name: "Band external rotation", note: "Elbow tucked, rotate the forearm out.", q: "band external rotation shoulder" },
+        { name: "Band external rotation", note: "Elbow tucked, rotate the forearm out.", yt: "KRmT2td4uQA", q: "band external rotation shoulder" },
         { name: "Cable/dumbbell external rotation", note: "Add steady load once form is clean.", q: "cable external rotation shoulder" }
       ]
     },
@@ -100,9 +132,9 @@
       equipment: ["band", "cable"], tempo: "2-1-2",
       cues: ["Pull to your eyes/forehead", "Thumbs back at the finish", "Squeeze the shoulder blades"],
       levels: [
-        { name: "Band pull-apart", note: "Simplest rear-shoulder builder.", q: "band pull apart exercise" },
+        { name: "Band pull-apart", note: "Simplest rear-shoulder builder.", yt: "smSSXITNpCI", q: "band pull apart exercise" },
         { name: "Band face pull", note: "Anchor at head height and pull to the face.", q: "band face pull" },
-        { name: "Cable face pull (rope)", note: "Heavier, smoother resistance.", q: "cable face pull rope" }
+        { name: "Cable face pull (rope)", note: "Heavier, smoother resistance.", yt: "eTCBSFlCJ_s", q: "cable face pull rope" }
       ]
     },
     "wristext": {
@@ -131,7 +163,7 @@
       cues: ["Full range — heel below the step", "Pause at the top"],
       levels: [
         { name: "Two-leg calf raise", note: "Bodyweight, both feet.", q: "double leg calf raise" },
-        { name: "Single-leg calf raise", note: "One foot, hold a wall for balance.", q: "single leg calf raise" },
+        { name: "Single-leg calf raise", note: "One foot, hold a wall for balance.", yt: "IphGZ8OlfYg", q: "single leg calf raise" },
         { name: "Loaded single-leg calf raise", note: "Add a dumbbell for strength.", q: "weighted single leg calf raise" }
       ]
     },
@@ -164,7 +196,7 @@
       levels: [
         { name: "Box squat to a bench", note: "Sit to a target to learn depth safely.", q: "box squat to bench" },
         { name: "Bodyweight squat", note: "Own your bodyweight before loading.", q: "bodyweight squat form" },
-        { name: "Goblet squat", note: "Hold a dumbbell/kettlebell at the chest — the money regression.", q: "goblet squat" },
+        { name: "Goblet squat", note: "Hold a dumbbell/kettlebell at the chest — the money regression.", yt: "gCESNsDsbqk", q: "goblet squat" },
         { name: "Front-rack squat", note: "Front-loaded with two bells or a barbell.", q: "front rack kettlebell squat" },
         { name: "Barbell back/front squat", note: "Highest loading potential.", q: "barbell front squat" }
       ]
@@ -176,7 +208,7 @@
       levels: [
         { name: "Supported split squat", note: "Hold a rack/TRX for balance.", q: "assisted split squat trx" },
         { name: "Reverse lunge", note: "Step back — knee-friendly starting lunge.", q: "reverse lunge" },
-        { name: "Bulgarian split squat", note: "Rear foot on a bench — big single-leg demand.", q: "bulgarian split squat" },
+        { name: "Bulgarian split squat", note: "Rear foot on a bench — big single-leg demand.", yt: "VPhhE6bBzZE", q: "bulgarian split squat" },
         { name: "Loaded Bulgarian split squat", note: "Add dumbbells to progress.", q: "dumbbell bulgarian split squat" }
       ]
     },
@@ -199,8 +231,8 @@
       levels: [
         { name: "Dowel hip hinge", note: "Learn the pattern with a stick on your back.", q: "dowel hip hinge" },
         { name: "Kettlebell deadlift", note: "Bell between the feet — friendly first load.", q: "kettlebell deadlift" },
-        { name: "Romanian deadlift (RDL)", note: "Soft knees, hinge to mid-shin.", q: "romanian deadlift dumbbell" },
-        { name: "Barbell deadlift", note: "Full-range pull from the floor.", q: "barbell deadlift form" }
+        { name: "Romanian deadlift (RDL)", note: "Soft knees, hinge to mid-shin.", yt: "aa57T45iFSE", q: "romanian deadlift dumbbell" },
+        { name: "Barbell deadlift", note: "Full-range pull from the floor.", yt: "Z6gcRfPNcZo", q: "barbell deadlift form" }
       ]
     },
     "slrdl": {
@@ -221,8 +253,8 @@
       cues: ["Body in one straight line", "Elbows ~45°, not flared", "Full range — chest to the floor/bar"],
       levels: [
         { name: "Hands-elevated push-up", note: "Higher hands = easier. Wall > counter > box.", q: "incline push up" },
-        { name: "Push-up", note: "Full push-up from the floor.", q: "push up form" },
-        { name: "Dumbbell bench/floor press", note: "Load each arm independently.", q: "dumbbell bench press" },
+        { name: "Push-up", note: "Full push-up from the floor.", yt: "WDIpL0pjun0", q: "push up form" },
+        { name: "Dumbbell bench/floor press", note: "Load each arm independently.", yt: "J-gWN5hYwRU", q: "dumbbell bench press" },
         { name: "Weighted / barbell bench press", note: "Highest loading for pressing strength.", q: "barbell bench press form" }
       ]
     },
@@ -235,7 +267,7 @@
       levels: [
         { name: "Half-kneeling landmine press", note: "Angled path is shoulder-friendly.", q: "half kneeling landmine press" },
         { name: "Seated dumbbell press", note: "Seated removes the balance demand.", q: "seated dumbbell shoulder press" },
-        { name: "Standing dumbbell press", note: "Adds trunk stability.", q: "standing dumbbell overhead press" },
+        { name: "Standing dumbbell press", note: "Adds trunk stability.", yt: "bj53-0DYKFo", q: "standing dumbbell overhead press" },
         { name: "Barbell overhead press", note: "Classic strict press.", q: "barbell overhead press" }
       ]
     },
@@ -248,7 +280,7 @@
       levels: [
         { name: "Band row", note: "Anchor a band and row — scalable and joint-friendly.", q: "seated band row" },
         { name: "Inverted row (feet forward)", note: "Walk feet out to make it easier/harder.", q: "inverted row trx" },
-        { name: "Single-arm dumbbell row", note: "Support on a bench, row one arm.", q: "single arm dumbbell row" },
+        { name: "Single-arm dumbbell row", note: "Support on a bench, row one arm.", yt: "W3fZzhw87ak", q: "single arm dumbbell row" },
         { name: "Barbell bent-over row", note: "Bilateral heavy rowing.", q: "barbell bent over row" }
       ]
     },
@@ -260,9 +292,9 @@
       cues: ["Start from a full hang", "Drive elbows to the ribs", "Chin over the bar, no kipping"],
       levels: [
         { name: "Lat pulldown", note: "Pick any load — easiest way to train the pattern.", q: "lat pulldown form" },
-        { name: "Band-assisted pull-up", note: "Band under the feet shares the load.", q: "band assisted pull up" },
+        { name: "Band-assisted pull-up", note: "Band under the feet shares the load.", yt: "4yE-XGDWJPg", q: "band assisted pull up" },
         { name: "Negative pull-up", note: "Jump up, lower slowly (5s).", q: "negative pull up" },
-        { name: "Pull-up", note: "Full-range from a dead hang.", q: "pull up form" },
+        { name: "Pull-up", note: "Full-range from a dead hang.", yt: "aNUSgyWRJYA", q: "pull up form" },
         { name: "Weighted pull-up", note: "Add load once reps come easily.", q: "weighted pull up" }
       ]
     },
@@ -274,7 +306,7 @@
       cues: ["Ribs down, glutes squeezed", "Straight line, no sagging hips", "Breathe"],
       levels: [
         { name: "Hands-elevated plank", note: "Hands on a bench reduces the load.", q: "incline plank" },
-        { name: "Forearm plank", note: "Standard plank on the elbows.", q: "forearm plank" },
+        { name: "Forearm plank", note: "Standard plank on the elbows.", yt: "wCBOqf-HrTI", q: "forearm plank" },
         { name: "Plank with shoulder taps", note: "Add anti-rotation by tapping shoulders.", q: "plank shoulder taps" },
         { name: "RKC / long-lever plank", note: "Maximal full-body tension.", q: "rkc plank" }
       ]
@@ -304,7 +336,7 @@
       equipment: ["dumbbell", "kettlebell"], tempo: "—",
       cues: ["Tall and braced", "Even, quiet steps", "Don't lean to one side"],
       levels: [
-        { name: "Two-hand farmer carry", note: "A bell in each hand.", q: "farmer carry" },
+        { name: "Two-hand farmer carry", note: "A bell in each hand.", yt: "lLAw6fUccKA", q: "farmer carry" },
         { name: "Suitcase carry (one side)", note: "Load one hand — big anti-lean challenge.", q: "suitcase carry" },
         { name: "Front-rack / overhead carry", note: "Higher load position, more core demand.", q: "front rack carry" }
       ]
@@ -338,7 +370,7 @@
       cues: ["It's a hip snap, not a squat", "Float the bell with the hips", "Braced, neutral spine"],
       levels: [
         { name: "Kettlebell deadlift → hip snap drill", note: "Groove the hinge and snap first.", q: "kettlebell hip snap drill" },
-        { name: "Two-hand kettlebell swing", note: "Explosive hip drive to chest height.", q: "kettlebell swing form" },
+        { name: "Two-hand kettlebell swing", note: "Explosive hip drive to chest height.", yt: "1Qi0NQW89Oc", q: "kettlebell swing form" },
         { name: "Single-arm kettlebell swing", note: "Adds an anti-rotation demand.", q: "single arm kettlebell swing" }
       ]
     },
@@ -372,7 +404,7 @@
       cues: ["Squeeze the glute of the back leg", "Ribs down — don't arch the back", "Breathe into it 30–60s"],
       levels: [
         { name: "Half-kneeling hip-flexor stretch", note: "Gentle version on the floor.", q: "half kneeling hip flexor stretch" },
-        { name: "Couch stretch", note: "Back foot up a wall/bench — deep stretch.", q: "couch stretch" }
+        { name: "Couch stretch", note: "Back foot up a wall/bench — deep stretch.", yt: "-rsIS-wl-ig", q: "couch stretch" }
       ]
     },
     "hammy": {
@@ -381,7 +413,7 @@
       cues: ["Long spine, hinge from the hip", "Ease in — never bounce"],
       levels: [
         { name: "Supine band hamstring stretch", note: "Lie down, loop a band over the foot.", q: "supine hamstring stretch band" },
-        { name: "Standing/seated hamstring stretch", note: "Hinge forward with a flat back.", q: "standing hamstring stretch" }
+        { name: "Standing/seated hamstring stretch", note: "Hinge forward with a flat back.", yt: "LVY692zJK0A", q: "standing hamstring stretch" }
       ]
     },
     "pigeon": {
@@ -389,7 +421,7 @@
       equipment: ["bodyweight"], tempo: "—",
       cues: ["Keep the hips square", "Sink slowly, breathe"],
       levels: [
-        { name: "Figure-4 stretch (on back)", note: "Easiest on the joints.", q: "figure 4 stretch" },
+        { name: "Figure-4 stretch (on back)", note: "Easiest on the joints.", yt: "eGqbnFII3J8", q: "figure 4 stretch" },
         { name: "Seated figure-4 (in a chair)", note: "Great if the floor is tough.", q: "seated figure 4 stretch" },
         { name: "Pigeon pose", note: "Deeper floor-based glute stretch.", q: "pigeon pose stretch" }
       ]
@@ -399,7 +431,7 @@
       equipment: ["bodyweight"], tempo: "—",
       cues: ["Gentle lean, no shoulder pinch", "Open the chest, not the low back"],
       levels: [
-        { name: "Doorway pec stretch", note: "Forearm on the frame, step through.", q: "doorway pec stretch" },
+        { name: "Doorway pec stretch", note: "Forearm on the frame, step through.", yt: "CEQMx4zFwYs", q: "doorway pec stretch" },
         { name: "Floor 'W' / thoracic opener", note: "Lie back over a rolled towel and open the arms.", q: "thoracic spine opener stretch" }
       ]
     },
@@ -475,7 +507,7 @@
       levels: [
         { name: "Feet-elevated glute bridge", note: "Floor bridge — friendliest version.", q: "glute bridge floor" },
         { name: "Shoulder-elevated hip thrust", note: "Upper back on a bench, bodyweight.", q: "bodyweight hip thrust bench" },
-        { name: "Dumbbell hip thrust", note: "Add a dumbbell across the hips.", q: "dumbbell hip thrust" },
+        { name: "Dumbbell hip thrust", note: "Add a dumbbell across the hips.", yt: "29OfN4ztW_g", q: "dumbbell hip thrust" },
         { name: "Barbell hip thrust", note: "Highest loading for the glutes.", q: "barbell hip thrust" }
       ]
     },

@@ -30,6 +30,14 @@
   }
   function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
 
+  /* first whole number in a prescription string ("8–10" → "8", "AMRAP 40 s" → "") */
+  function firstInt(s) {
+    var m = /\d+/.exec(String(s == null ? "" : s));
+    return m ? m[0] : "";
+  }
+  /* sections whose exercises are worth logging (load/reps work) */
+  var LOGGABLE = { main: 1, power: 1, conditioning: 1 };
+
   /* default starting level of a prescription: given, else middle of ladder */
   function startLevel(fam, presc) {
     var n = fam.levels.length;
@@ -194,17 +202,21 @@
   }
 
   /* render one exercise prescription as a scalable card */
-  function exerciseRow(presc, phase) {
+  function exerciseRow(presc, phase, section) {
     var fam = LIB[presc.ex];
     if (!fam) return '<div class="ts-ex"><b>' + esc(presc.ex) + '</b> <span class="muted">(exercise not found)</span></div>';
     var lv = startLevel(fam, presc);
     var id = "row" + (rowCounter++);
-    rowState[id] = { ex: presc.ex, lv: lv };
 
     var scheme = phase.scheme || {};
-    var setsReps = (presc.sets ? presc.sets : (scheme.sets || "")) + " × " + (presc.reps ? presc.reps : (scheme.reps || ""));
+    var setsRaw = presc.sets ? presc.sets : (scheme.sets || "");
+    var repsRaw = presc.reps ? presc.reps : (scheme.reps || "");
+    var setsReps = setsRaw + " × " + repsRaw;
     var tempo = presc.tempo || fam.tempo || scheme.tempo || "—";
     var rest = presc.rest || scheme.rest || "—";
+    var loggable = !!LOGGABLE[section];
+
+    rowState[id] = { ex: presc.ex, lv: lv, sets: firstInt(setsRaw), reps: firstInt(repsRaw) };
 
     var cues = (fam.cues || []).join(" · ");
 
@@ -215,7 +227,10 @@
             '<span class="ts-ex-pattern">' + esc(fam.pattern) + '</span>' +
             '<span class="ts-ex-name" data-name>' + esc(fam.levels[lv].name) + '</span>' +
           '</div>' +
-          '<a class="ts-demo" data-demo target="_blank" rel="noopener" href="' + demoHref(fam.levels[lv]) + '">▶ Demo</a>' +
+          '<div class="ts-ex-actions">' +
+            (loggable ? '<button type="button" class="ts-log" data-log title="Send to workout log">＋ Log</button>' : '') +
+            '<a class="ts-demo" data-demo target="_blank" rel="noopener" href="' + demoHref(fam.levels[lv]) + '">▶ Demo</a>' +
+          '</div>' +
         '</div>' +
         '<div class="ts-ex-rx">' +
           '<span><b>' + esc(setsReps) + '</b><small>sets × reps</small></span>' +
@@ -237,7 +252,7 @@
     var sections = SECTION_ORDER.filter(function (s) { return w[s] && w[s].length; });
     var body = sections.map(function (s) {
       var meta = SECTION_META[s];
-      var rows = w[s].map(function (p) { return exerciseRow(p, phase); }).join("");
+      var rows = w[s].map(function (p) { return exerciseRow(p, phase, s); }).join("");
       return '<div class="ts-section">' +
         '<div class="ts-section-head"><span class="ts-section-icon">' + meta.icon + '</span>' +
           '<div><h5>' + esc(meta.title) + '</h5><p>' + esc(meta.blurb) + '</p></div></div>' +
@@ -304,9 +319,46 @@
     viewer.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  /* viewer-level interactions: close, scale, print */
+  /* push a prescription into the workout logger form (if present on the page) */
+  function prefillLogger(name, sets, reps) {
+    var exSel = document.getElementById("ex");
+    var customWrap = document.getElementById("custom-wrap");
+    var customInput = document.getElementById("ex-custom");
+    if (!exSel || !customInput) return false;         // no logger on this page
+
+    // route through the logger's "custom exercise" path so any name works
+    exSel.value = "__custom";
+    exSel.dispatchEvent(new Event("change"));          // let logger.js reveal the field
+    if (customWrap) customWrap.classList.remove("hidden");
+    customInput.value = name;
+
+    var setsEl = document.getElementById("sets");
+    var repsEl = document.getElementById("reps");
+    if (setsEl && sets) setsEl.value = sets;
+    if (repsEl && reps) repsEl.value = reps;
+
+    var anchor = document.getElementById("ts-logger-anchor") || document.getElementById("logger");
+    if (anchor) anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+    var loadEl = document.getElementById("load");
+    if (loadEl) setTimeout(function () { loadEl.focus(); }, 400);
+    return true;
+  }
+
+  /* viewer-level interactions: close, scale, log, print */
   if (viewer) {
     viewer.addEventListener("click", function (e) {
+      var logBtn = e.target.closest(".ts-log");
+      if (logBtn) {
+        var lrow = logBtn.closest(".ts-ex");
+        var lst = rowState[lrow.getAttribute("data-row")];
+        var lfam = LIB[lst.ex];
+        var moved = prefillLogger(lfam.levels[lst.lv].name, lst.sets, lst.reps);
+        if (moved) {
+          logBtn.textContent = "✓ Sent";
+          setTimeout(function () { logBtn.textContent = "＋ Log"; }, 1600);
+        }
+        return;
+      }
       if (e.target.closest(".ts-close")) {
         viewer.classList.add("hidden");
         viewer.innerHTML = "";

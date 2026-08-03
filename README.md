@@ -35,13 +35,17 @@ assets/data/programs.js    PROGRAM TEMPLATES + subscription TIERS. Each
 assets/js/program-engine.js  Renders the filterable library, the full
                            program viewer (overview → periodization table →
                            phase-by-phase workouts), the live ◀ Regress /
-                           Progress ▶ scaler on each exercise, and the
-                           pricing-tier grid. Print/save built in.
+                           Progress ▶ scaler on each exercise, a "＋ Log"
+                           button that pre-fills the workout logger from a
+                           prescription, and the pricing-tier grid.
+                           Print/save built in.
 ```
 
 **Adding a program:** append an object to `TS_PROGRAMS` in `programs.js`, referencing exercise `id`s from `exercises.js`. Each workout needs `warmup`, `prehab`, a main block (`main`/`power`/`conditioning`) and `cooldown` arrays of `{ ex, level, sets, reps, tempo, rest, note }`. `level` is the starting rung of that exercise's ladder; the viewer lets users scale up/down from there.
 
-**Adding an exercise:** append a family to `TS_EXERCISES`. Give it a `levels` array ordered easiest → hardest. Each level's demo link defaults to a **YouTube search** for its `q` phrase (so links never rot); to pin a specific curated video, add `yt: "<youtube-id>"` to that level.
+**Adding an exercise:** append a family to `TS_EXERCISES`. Give it a `levels` array ordered easiest → hardest. Each level's demo link defaults to a **YouTube search** for its `q` phrase (so links never rot); to pin a specific curated video, add `yt: "<youtube-id>"` to that level. The **27 most-used variations are already pinned** to specific tutorials (see the audit list at the top of `exercises.js`) — these IDs were sourced from current web search, so spot-check them and swap in your own where you prefer; removing a `yt` reverts that level to the search fallback.
+
+**Workout logger pre-fill:** every main/power/conditioning exercise in a rendered program shows a **＋ Log** button. It drops the exercise's current (scaled) variation name plus its prescribed sets and reps straight into the logger form (`assets/js/logger.js`) and scrolls you there — so tracking a set is one tap. The logger still stores data in `localStorage`.
 
 **Subscription tiers** live in `TS_TIERS` and scale by how many programs a member can open (Free → Essential → Complete → Coach/Pro). Each tier's CTA is wired to Gumroad via its `product` key (`sub-essential`, `sub-complete`, `sub-coach`); the trainer seminar uses `seminar-virtual`. Fill the permalinks in `assets/js/site.js` to go live — see `GUMROAD-SETUP.md`.
 
