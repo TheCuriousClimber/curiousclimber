@@ -335,6 +335,19 @@ tbody tr:hover{background:var(--sand-200);}
 .ts-unlock b{color:#fff;}
 .ts-unlock .muted{color:#a9c4b8 !important;}
 
+/* ---------- TRAINING SYSTEM: license gate ---------- */
+.ts-lock{margin-top:.8rem;border:2px dashed var(--line);border-radius:var(--radius);
+  background:var(--sand-200);padding:2rem 1.6rem;text-align:center;}
+.ts-lock-icon{font-size:2.4rem;line-height:1;}
+.ts-lock h4{font-size:1.3rem;margin:.6rem 0 .5rem;}
+.ts-lock p{max-width:52ch;margin:0 auto;color:#2b3630;}
+.ts-lock-actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem;}
+.ts-lock-foot{margin-top:1rem;font-size:.85rem;}
+.ts-acc-msg{font-size:.9rem;margin-top:.7rem;min-height:1.2em;}
+.ts-acc-msg.err{color:#a12d2d;}
+.ts-access-modal .modal{text-align:left;}
+#ts-members-btn{cursor:pointer;}
+
 /* ---------- TRAINING SYSTEM: pricing tiers ---------- */
 .ts-tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;align-items:stretch;}
 .ts-tier{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
@@ -352,7 +365,7 @@ tbody tr:hover{background:var(--sand-200);}
 .ts-tier-feats li::before{content:"✓";position:absolute;left:0;color:var(--moss);font-weight:800;}
 
 @media print{
-  .site-header,.site-footer,.ts-close,.ts-scale,.ts-log,.hero-actions,.nav-cta,#ts-library-section,#ts-tiers-section,#ts-logger-anchor{display:none !important;}
+  .site-header,.site-footer,.ts-close,.ts-scale,.ts-log,.ts-lock-actions,.hero-actions,.nav-cta,#ts-library-section,#ts-tiers-section,#ts-logger-anchor{display:none !important;}
   .ts-workout .acc-body,details.acc[open] .acc-body{display:block !important;}
   .acc summary::after{display:none;}
   .ts-ex{break-inside:avoid;}

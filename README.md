@@ -47,6 +47,30 @@ assets/js/program-engine.js  Renders the filterable library, the full
 
 **Workout logger pre-fill:** every main/power/conditioning exercise in a rendered program shows a **＋ Log** button. It drops the exercise's current (scaled) variation name plus its prescribed sets and reps straight into the logger form (`assets/js/logger.js`) and scrolls you there — so tracking a set is one tap. The logger still stores data in `localStorage`.
 
+### License-key access gate (`assets/js/access.js`)
+
+Turns the paywall into a real one. Premium programs render a **free preview** (overview, evidence, periodization table) but the actual phase-by-phase workouts are replaced by a **lock panel** until the member unlocks. The **Members** nav entry (and every lock panel) opens a modal where they paste the license key from their subscription; a valid key grants that product's tier, cached in `localStorage`, and the open program re-renders unlocked. Tier ranking (free < essential < complete < coach) means a higher tier unlocks everything below it.
+
+**Going live (in `access.js`):** on each subscription product in Gumroad, turn on per-sale license keys; fill each product's `product_id`/`permalink` in `LICENSE.products`; set `LICENSE.live = true`. Until then it runs in **demo mode** — `DEMO-ESSENTIAL` / `DEMO-COMPLETE` / `DEMO-COACH` unlock locally so you can test the flow (demo keys stop working once live).
+
+**Security reality:** this is a client-side gate — a solid deterrent and the norm for small creator sites, but the program data ships in JS, so it isn't bulletproof. For hard enforcement, serve premium program data from a backend only after verifying the key server-side.
+
+**If Gumroad calls are CORS-blocked** from the browser, point `LICENSE.verifyEndpoint` at a tiny proxy. A Cloudflare Worker is enough:
+
+```js
+export default {
+  async fetch(req) {
+    const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "content-type" };
+    if (req.method === "OPTIONS") return new Response(null, { headers: cors });
+    const body = await req.text();
+    const r = await fetch("https://api.gumroad.com/v2/licenses/verify", {
+      method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body
+    });
+    return new Response(await r.text(), { status: r.status, headers: { ...cors, "Content-Type": "application/json" } });
+  }
+};
+```
+
 **Subscription tiers** live in `TS_TIERS` and scale by how many programs a member can open (Free → Essential → Complete → Coach/Pro). Each tier's CTA is wired to Gumroad via its `product` key (`sub-essential`, `sub-complete`, `sub-coach`); the trainer seminar uses `seminar-virtual`. Fill the permalinks in `assets/js/site.js` to go live — see `GUMROAD-SETUP.md`.
 
 ### Free articles (Philosophy)

@@ -78,10 +78,12 @@
   var activeFilter = "all";
 
   function progCard(p) {
-    var locked = p.tier !== "free";
+    var owned = hasAccess(p);
     var badge = p.tier === "free"
       ? '<span class="badge badge-free">Free</span>'
-      : '<span class="badge badge-premium">' + esc(TIER_LABEL[p.tier] || p.tier) + '</span>';
+      : (owned ? '<span class="badge badge-free">✓ Unlocked</span>'
+               : '<span class="badge badge-premium">' + esc(TIER_LABEL[p.tier] || p.tier) + '</span>');
+    var status = p.tier === "free" ? "Free to start" : (owned ? "✓ Included in your plan" : "🔒 " + esc(TIER_LABEL[p.tier]));
     return '' +
       '<article class="card" data-goal="' + esc(p.goal) + '" data-level="' + esc(p.level) + '">' +
         '<div class="card-media" style="background:linear-gradient(135deg,var(--forest),var(--moss))">' +
@@ -97,7 +99,7 @@
           '<h3>' + esc(p.title) + '</h3>' +
           '<p>' + esc(p.tagline) + '</p>' +
           '<div class="card-foot">' +
-            '<span class="muted" style="font-size:.85rem">' + (locked ? "🔒 " + esc(TIER_LABEL[p.tier]) : "Free to start") + '</span>' +
+            '<span class="muted" style="font-size:.85rem">' + status + '</span>' +
             '<button class="btn btn-primary btn-sm" data-open="' + esc(p.id) + '">View program</button>' +
           '</div>' +
         '</div>' +
@@ -145,6 +147,7 @@
   /* live state: map of unique row-id -> current level index */
   var rowState = {};
   var rowCounter = 0;
+  var currentProgramId = null;
 
   function metaGrid(p) {
     var rows = [
@@ -276,21 +279,50 @@
       '</div>';
   }
 
+  function hasAccess(p) {
+    return p.tier === "free" || (window.TS_ACCESS ? TS_ACCESS.hasAccess(p.tier) : true);
+  }
+
   function subscribeCta(p) {
     if (p.tier === "free") {
       return '<div class="notice mt-3"><span>✅</span><span>This starter program is <b>free</b> — pick your levels, print it, and get training. Log your sessions below to track progress.</span></div>';
     }
+    if (hasAccess(p)) {
+      return '<div class="notice mt-3" style="background:#e5f4ec;border-color:#cfe9db;color:#1c7a52"><span>✅</span><span>Unlocked with your <b>' + esc(TIER_LABEL[(window.TS_ACCESS && TS_ACCESS.tier()) || p.tier]) + '</b> membership. Enjoy the full plan — and log your sets below.</span></div>';
+    }
+    return "";  // locked: the lock panel (below) carries the CTA instead
+  }
+
+  /* the gate: shown in place of the workouts when a program is locked */
+  function lockPanel(p) {
     var t = TIERS.filter(function (x) { return x.id === p.tier; })[0] || {};
-    return '<div class="ts-unlock mt-3">' +
-      '<div><b>Unlock this program</b><p class="muted" style="font-size:.9rem;margin-top:.2rem">Included with the <b>' + esc(TIER_LABEL[p.tier]) + '</b> plan (' + esc(t.price || "") + esc(t.cadence || "") + '). This preview shows the real structure and exercises.</p></div>' +
-      '<a class="btn btn-primary" href="#" data-buy="' + esc(t.name || TIER_LABEL[p.tier]) + ' subscription" data-price="' + esc((t.price || "") + (t.cadence || "")) + '" data-product="' + esc(t.product || "") + '">Subscribe · ' + esc((t.price || "") + (t.cadence || "")) + '</a>' +
-      '</div>';
+    var nPhases = p.phases.length;
+    var nWorkouts = p.phases.reduce(function (s, ph) { return s + ph.workouts.length; }, 0);
+    var priceStr = (t.price || "") + (t.cadence || "");
+    return '<div class="ts-lock">' +
+      '<div class="ts-lock-icon" aria-hidden="true">🔒</div>' +
+      '<h4>Unlock the full ' + esc(p.title) + '</h4>' +
+      '<p>This is a <b>' + esc(TIER_LABEL[p.tier]) + '</b> program. The overview, evidence and periodization plan above are free to browse — the <b>' + nPhases + ' training phases</b> and <b>' + nWorkouts + ' full workouts</b> (every exercise, set, rep, tempo, cue and demo, with the ◀/▶ scaler and ＋ Log) unlock with your membership.</p>' +
+      '<div class="ts-lock-actions">' +
+        '<button class="btn btn-primary" type="button" data-unlock data-unlock-tier="' + esc(p.tier) + '">I have a license key</button>' +
+        '<a class="btn btn-ghost" href="#" data-buy="' + esc(t.name || TIER_LABEL[p.tier]) + ' subscription" data-price="' + esc(priceStr) + '" data-product="' + esc(t.product || "") + '">Subscribe · ' + esc(priceStr) + '</a>' +
+      '</div>' +
+      '<p class="ts-lock-foot muted">Already subscribed? Click “I have a license key” and paste the key from your confirmation email.</p>' +
+    '</div>';
   }
 
   function openProgram(id) {
     var p = PROGRAMS.filter(function (x) { return x.id === id; })[0];
     if (!p || !viewer) return;
     rowState = {}; rowCounter = 0;
+    currentProgramId = id;
+    var unlocked = hasAccess(p);
+
+    var planSection = unlocked
+      ? '<h3 class="mt-4">The full plan, phase by phase</h3>' +
+        '<p class="muted" style="font-size:.92rem">Every session has four parts — warm-up, injury-prevention, main work and cool-down. Tap a workout to open it, then use ◀ / ▶ on any exercise to pick the difficulty that fits you.</p>' +
+        '<div class="ts-phases">' + p.phases.map(phaseBlock).join("") + '</div>'
+      : '<h3 class="mt-4">The full plan, phase by phase</h3>' + lockPanel(p);
 
     viewer.innerHTML =
       '<div class="panel ts-program">' +
@@ -304,9 +336,7 @@
         justificationBlock(p) +
         howtoBlock(p) +
         mesocycleTable(p) +
-        '<h3 class="mt-4">The full plan, phase by phase</h3>' +
-        '<p class="muted" style="font-size:.92rem">Every session has four parts — warm-up, injury-prevention, main work and cool-down. Tap a workout to open it, then use ◀ / ▶ on any exercise to pick the difficulty that fits you.</p>' +
-        '<div class="ts-phases">' + p.phases.map(phaseBlock).join("") + '</div>' +
+        planSection +
         subscribeCta(p) +
         '<div class="mt-3 flex">' +
           '<button class="btn btn-ghost" type="button" id="ts-print">🖨️ Print / save plan</button>' +
@@ -424,6 +454,14 @@
   /* ---------- boot ---------- */
   renderLibrary();
   renderTiers();
+
+  /* re-render an open program (and the library badges) when access changes */
+  if (window.TS_ACCESS && TS_ACCESS.onChange) {
+    TS_ACCESS.onChange(function () {
+      renderLibrary();
+      if (currentProgramId && viewer && !viewer.classList.contains("hidden")) openProgram(currentProgramId);
+    });
+  }
 
   /* deep-link: #program=<id> opens a program directly */
   function openFromHash() {
