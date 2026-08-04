@@ -28,13 +28,21 @@
    level a `yt` property with a YouTube ID (e.g. yt:"dQw4w9WgXcQ") and the
    engine will link straight to it. See README.
 
-   CURATED (`yt`) VIDEOS — EVERY variation (all 150) is now pinned to a
+   CURATED (`yt`) VIDEOS — EVERY variation (all 150) is pinned to a
    specific tutorial. Each level keeps its `q` phrase too, so removing a
    `yt` instantly reverts that one level to the YouTube-search fallback.
    IDs were sourced from current web search and favour reputable/
    institutional demos (NASM, Squat University, OPEX, exercise libraries)
-   where available — please spot-check and swap any you'd rather feature.
-   A sample of the headline movements (see each level's `yt` for the rest):
+   where available.
+     VERIFICATION STATUS: this environment blocks youtube.com, so IDs
+     can't be played to confirm here. A spot-check of ~10 (re-searching
+     each movement and confirming the pinned ID is the video that comes
+     back) found the large majority correct — usually the top result —
+     with an occasional miss that was corrected. Treat the pins as
+     best-effort until reviewed with YouTube access; because the `q`
+     fallback is always present, deleting any wrong `yt` is a safe
+     one-field fix. A sample of headline movements (see each level's
+     `yt` for the rest):
      -CiWQ2IvY34 World's Greatest Stretch (Squat University)
      iKQ-DHgti20 Cat–Cow Stretch (PartnerMD)
      difYoBtZi2s Leg Swings
@@ -156,7 +164,7 @@
       cues: ["Resist the twist — don't let the band turn you", "Ribs down, glutes on"],
       levels: [
         { name: "Tall-kneeling Pallof hold", note: "Just hold and resist rotation.", yt: "y30uEJhBTwQ", q: "tall kneeling pallof press" },
-        { name: "Standing Pallof press", note: "Press out and back in without rotating.", yt: "Me6oSiOdiUY", q: "pallof press" },
+        { name: "Standing Pallof press", note: "Press out and back in without rotating.", yt: "dBAmQ9bx3JA", q: "pallof press" },
         { name: "Split-stance Pallof press", note: "Narrower base raises the anti-rotation demand.", yt: "hSdbU0wj3-c", q: "split stance pallof press" }
       ]
     },
