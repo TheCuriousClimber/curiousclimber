@@ -225,6 +225,8 @@
     input.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
     var plans = body.querySelector("#ts-acc-plans");
     if (plans) plans.addEventListener("click", closeModal);
+    // post-purchase: a key handed in via URL is pre-filled and checked automatically
+    if (context && context.prefill) { input.value = context.prefill; submit(); }
   }
 
   /* ---------- header status button ---------- */
@@ -244,5 +246,31 @@
   });
 
   API.openModal = openModal;
+
+  /* ---------- post-purchase auto-unlock ----------
+     After checkout you can send buyers to e.g. programs.html?license=THEIR-KEY
+     (set the product's redirect/receipt in Gumroad). If a license param is
+     present and no one is signed in yet, we open the modal and verify it
+     automatically, then remove it from the address bar. */
+  function licenseFromUrl() {
+    var m = /[?#&]license=([^&#]+)/.exec(location.href);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+  }
+  function stripLicenseParam() {
+    try {
+      var u = new URL(location.href);
+      u.searchParams.delete("license");
+      if (/[?&#]license=/.test(u.hash)) {
+        u.hash = u.hash.replace(/([?&#])license=[^&#]*/g, "$1").replace(/[?&#]+$/, "");
+      }
+      history.replaceState(null, "", u.toString());
+    } catch (e) {}
+  }
+  var urlKey = licenseFromUrl();
+  if (urlKey && !read()) {
+    stripLicenseParam();
+    openModal({ prefill: urlKey });
+  }
+
   paintStatus();
 })();

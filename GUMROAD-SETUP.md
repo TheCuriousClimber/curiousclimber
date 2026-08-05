@@ -79,6 +79,30 @@ Commit and push — GitHub Pages redeploys in ~1 minute.
   page — either way the sale goes through.
 - Unconfigured buttons keep the harmless demo modal.
 
+## Subscriptions &amp; the unlock loop (end-to-end)
+
+The **Programs** page (`programs.html`) sells recurring memberships and gates premium programs behind a **license key**. The full loop, once configured, is: **subscribe on Gumroad → get a license key → paste it (or land back with it in the URL) → program unlocks.**
+
+**One-time setup:**
+
+1. **Create the three subscription products** in Gumroad as *recurring memberships*, using these exact permalinks so the buttons light up automatically:
+   `sub-essential` ($12/mo) · `sub-complete` ($24/mo) · `sub-coach` ($49/mo). (The trainer seminar uses `seminar-virtual`.)
+2. On **each** subscription product, turn on **“Generate a unique license key per sale.”**
+3. Set `GUMROAD_USER` (this file) so the Subscribe buttons become real Gumroad checkouts.
+4. In **`assets/js/access.js`**, set `LICENSE.live = true`. The tier→permalink map there already matches (`sub-essential`→essential, etc.); the permalink is enough to verify, and you can optionally add each product’s `product_id` for extra robustness.
+
+**How the unlock works after that:**
+
+- A member clicks **Subscribe**, pays on Gumroad, and receives a **license key**.
+- They open **Members** (or “I have a license key” on any locked program) and paste it. We verify it against Gumroad’s license API and, if the subscription is active, unlock that tier (cached in the browser).
+- **Smoother option:** in the product’s *“Redirect”* setting on Gumroad, send buyers to `https://YOURSITE/programs.html?license=THEIR-KEY`. The page auto-verifies the key and unlocks on arrival, then removes it from the address bar. (Confirm Gumroad’s current variable for inserting the key; otherwise members just paste it once.)
+
+**Verification calls blocked by CORS?** Point `LICENSE.verifyEndpoint` at a tiny proxy — a copy-paste Cloudflare Worker is in the main `README.md`.
+
+**Readiness checkpoint:** before any workouts open (free or paid), members must complete the one-time **PAR-Q readiness check** (`legal/par-q.html`). This is a safety/liability gate that sits alongside the license gate.
+
+**Demo mode:** while `GUMROAD_USER` is empty or `LICENSE.live = false`, Subscribe buttons open the harmless demo modal and the keys `DEMO-ESSENTIAL` / `DEMO-COMPLETE` / `DEMO-COACH` unlock locally so you can test the whole flow before going live.
+
 ## Alternatives
 Prefer a full store with inventory and shipping labels for the merch? You can
 point `custom-performance` and the programs at Gumroad (digital) while moving

@@ -283,7 +283,16 @@
     return p.tier === "free" || (window.TS_ACCESS ? TS_ACCESS.hasAccess(p.tier) : true);
   }
 
+  /* readiness checkpoint — has the user completed the PAR-Q acknowledgement? */
+  function readinessOk() {
+    try {
+      var s = JSON.parse(localStorage.getItem("ts-parq-v1"));
+      return !!(s && s.acknowledged);
+    } catch (e) { return false; }
+  }
+
   function subscribeCta(p) {
+    if (!readinessOk()) return "";              // the readiness panel carries the message
     if (p.tier === "free") {
       return '<div class="notice mt-3"><span>✅</span><span>This starter program is <b>free</b> — pick your levels, print it, and get training. Log your sessions below to track progress.</span></div>';
     }
@@ -291,6 +300,20 @@
       return '<div class="notice mt-3" style="background:#e5f4ec;border-color:#cfe9db;color:#1c7a52"><span>✅</span><span>Unlocked with your <b>' + esc(TIER_LABEL[(window.TS_ACCESS && TS_ACCESS.tier()) || p.tier]) + '</b> membership. Enjoy the full plan — and log your sets below.</span></div>';
     }
     return "";  // locked: the lock panel (below) carries the CTA instead
+  }
+
+  /* the safety gate: shown in place of the workouts until the PAR-Q is done */
+  function readinessPanel() {
+    return '<div class="ts-lock ts-readiness">' +
+      '<div class="ts-lock-icon" aria-hidden="true">🩺</div>' +
+      '<h4>One quick safety step before you start</h4>' +
+      '<p>Please complete the 1-minute <b>readiness check</b> and accept the <b>health &amp; fitness disclaimer</b> once before opening any workouts. It stays in your browser — you only do it a single time.</p>' +
+      '<div class="ts-lock-actions">' +
+        '<a class="btn btn-primary" href="legal/par-q.html" target="_blank" rel="noopener">Take the readiness check</a>' +
+        '<a class="btn btn-ghost" href="legal/disclaimer.html" target="_blank" rel="noopener">Read the disclaimer</a>' +
+      '</div>' +
+      '<p class="ts-lock-foot muted">Finished it in the other tab? <button type="button" class="ts-linkbtn" data-readiness-recheck>Refresh</button></p>' +
+    '</div>';
   }
 
   /* the gate: shown in place of the workouts when a program is locked */
@@ -316,13 +339,18 @@
     if (!p || !viewer) return;
     rowState = {}; rowCounter = 0;
     currentProgramId = id;
-    var unlocked = hasAccess(p);
 
-    var planSection = unlocked
-      ? '<h3 class="mt-4">The full plan, phase by phase</h3>' +
+    var planHead = '<h3 class="mt-4">The full plan, phase by phase</h3>';
+    var planSection;
+    if (!hasAccess(p)) {
+      planSection = planHead + lockPanel(p);             // gate 1: membership
+    } else if (!readinessOk()) {
+      planSection = planHead + readinessPanel();         // gate 2: readiness
+    } else {
+      planSection = planHead +
         '<p class="muted" style="font-size:.92rem">Every session has four parts — warm-up, injury-prevention, main work and cool-down. Tap a workout to open it, then use ◀ / ▶ on any exercise to pick the difficulty that fits you.</p>' +
-        '<div class="ts-phases">' + p.phases.map(phaseBlock).join("") + '</div>'
-      : '<h3 class="mt-4">The full plan, phase by phase</h3>' + lockPanel(p);
+        '<div class="ts-phases">' + p.phases.map(phaseBlock).join("") + '</div>';
+    }
 
     viewer.innerHTML =
       '<div class="panel ts-program">' +
@@ -398,6 +426,8 @@
       }
       if (e.target.id === "ts-print") { window.print(); return; }
 
+      if (e.target.closest("[data-readiness-recheck]")) { recheckOpen(); return; }
+
       var sc = e.target.closest(".ts-scale-btn");
       if (sc) {
         var rowEl = sc.closest(".ts-ex");
@@ -455,13 +485,20 @@
   renderLibrary();
   renderTiers();
 
+  /* re-open the current program if it's showing (used after access/readiness changes) */
+  function recheckOpen() {
+    if (currentProgramId && viewer && !viewer.classList.contains("hidden")) openProgram(currentProgramId);
+  }
+
   /* re-render an open program (and the library badges) when access changes */
   if (window.TS_ACCESS && TS_ACCESS.onChange) {
-    TS_ACCESS.onChange(function () {
-      renderLibrary();
-      if (currentProgramId && viewer && !viewer.classList.contains("hidden")) openProgram(currentProgramId);
-    });
+    TS_ACCESS.onChange(function () { renderLibrary(); recheckOpen(); });
   }
+
+  /* readiness (PAR-Q) is completed on another page/tab — re-check when we return */
+  window.addEventListener("storage", function (e) { if (e.key === "ts-parq-v1") recheckOpen(); });
+  window.addEventListener("focus", recheckOpen);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) recheckOpen(); });
 
   /* deep-link: #program=<id> opens a program directly */
   function openFromHash() {

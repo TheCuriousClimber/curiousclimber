@@ -343,6 +343,9 @@ tbody tr:hover{background:var(--sand-200);}
 .ts-lock p{max-width:52ch;margin:0 auto;color:#2b3630;}
 .ts-lock-actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem;}
 .ts-lock-foot{margin-top:1rem;font-size:.85rem;}
+.ts-readiness{background:#eef6f1;border-color:#cfe9db;}
+.ts-linkbtn{background:none;border:none;color:var(--moss);font-weight:700;text-decoration:underline;padding:0;font:inherit;cursor:pointer;}
+.ts-linkbtn:hover{color:var(--forest);}
 .ts-acc-msg{font-size:.9rem;margin-top:.7rem;min-height:1.2em;}
 .ts-acc-msg.err{color:#a12d2d;}
 .ts-access-modal .modal{text-align:left;}

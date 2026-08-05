@@ -53,6 +53,10 @@ Turns the paywall into a real one. Premium programs render a **free preview** (o
 
 **Going live (in `access.js`):** on each subscription product in Gumroad, turn on per-sale license keys; fill each product's `product_id`/`permalink` in `LICENSE.products`; set `LICENSE.live = true`. Until then it runs in **demo mode** — `DEMO-ESSENTIAL` / `DEMO-COMPLETE` / `DEMO-COACH` unlock locally so you can test the flow (demo keys stop working once live).
 
+**Post-purchase auto-unlock:** send buyers back to `programs.html?license=THEIR-KEY` (via Gumroad's redirect/receipt) and the page verifies the key and unlocks on arrival, then strips it from the address bar. Otherwise members paste the key into the **Members** modal once.
+
+**Readiness checkpoint:** independently of membership, the workouts stay hidden behind a **PAR-Q gate** until the member completes the one-time readiness check (`legal/par-q.html`), which saves `ts-parq-v1` to `localStorage`. So opening a program's workouts requires *both* access (free tier or a valid key) *and* a completed readiness acknowledgement. See `GUMROAD-SETUP.md` for the full subscribe → key → unlock loop.
+
 **Security reality:** this is a client-side gate — a solid deterrent and the norm for small creator sites, but the program data ships in JS, so it isn't bulletproof. For hard enforcement, serve premium program data from a backend only after verifying the key server-side.
 
 **If Gumroad calls are CORS-blocked** from the browser, point `LICENSE.verifyEndpoint` at a tiny proxy. A Cloudflare Worker is enough:
