@@ -14,6 +14,9 @@
 (function () {
   "use strict";
 
+  /* relative prefix to reach /legal/ from any page depth (root, /articles/, /legal/) */
+  var LEGAL = /\/(articles|legal)\//.test(location.pathname) ? "../" : "";
+
   // >>> THE ONLY LINE YOU MUST EDIT TO GO LIVE <<<
   // Set this to your Gumroad subdomain. While it's "" the whole site stays in
   // safe demo mode (nothing is charged), no matter what's in GUMROAD_PRODUCTS.
@@ -69,6 +72,18 @@
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
+  /* footer legal links — injected on every page so the legal pages are always reachable */
+  var fbar = document.querySelector(".footer-bottom");
+  if (fbar) {
+    var legalSpan = document.createElement("span");
+    legalSpan.innerHTML =
+      '<a href="' + LEGAL + 'legal/terms.html">Terms</a> · ' +
+      '<a href="' + LEGAL + 'legal/privacy.html">Privacy</a> · ' +
+      '<a href="' + LEGAL + 'legal/disclaimer.html">Health Disclaimer</a> · ' +
+      '<a href="' + LEGAL + 'legal/par-q.html">Readiness (PAR-Q)</a>';
+    fbar.appendChild(legalSpan);
+  }
+
   /* ---- Wire up configured Gumroad buttons ----
      For each [data-product] whose key has a permalink AND GUMROAD_USER is set,
      turn the button into a real Gumroad checkout link (overlay when gumroad.js
@@ -113,6 +128,7 @@
       '<h3 id="modal-title">Checkout</h3>' +
       '<p id="modal-body" class="muted"></p>' +
       '<div class="mt-3"><button class="btn btn-primary btn-block" id="modal-confirm">Continue to secure checkout</button></div>' +
+      '<p class="muted mt-2" style="font-size:.78rem">By continuing you agree to our <a href="' + LEGAL + 'legal/terms.html">Terms</a>, <a href="' + LEGAL + 'legal/privacy.html">Privacy Policy</a> and <a href="' + LEGAL + 'legal/disclaimer.html">Health &amp; Fitness Disclaimer</a>.</p>' +
       '<p class="muted mt-2" style="font-size:.8rem">Demo build — no card is charged. Add your Gumroad links in <code>assets/js/site.js</code> to go live.</p>' +
       "</div>";
     document.body.appendChild(overlay);
