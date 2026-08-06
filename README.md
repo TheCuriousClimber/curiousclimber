@@ -14,7 +14,6 @@ repo root to GitHub Pages.
 | **Philosophy** | `philosophy.html` | Informational hub. Translates peer-reviewed sport science (exercise physiology, periodization, anatomy) into plain, first-year-undergrad language. Dispels the "lifting makes you bulky" myth to justify — and sell — resistance training. Mix of **free** promotional articles/videos and **premium** members' content. |
 | **Practice** | `practice.html` | Marketplace of pre-made, goal-specific, **periodized** programs (max strength, power, endurance, injury-prevention, mobility, balance…). Each program explains how its adaptations transfer to the wall and why to buy it. Includes a built-in **workout logger with progress charts**. |
 | **Performance** | `performance.html` | A custom program builder. Takes the climber's grade, experience, strengths/weaknesses, schedule, equipment and injuries, and generates a comprehensive periodized plan — plus an **"adapt my next block"** tool, and optional nutrition & mental-training add-ons. |
-| **The Garage** | `autobody-shop.html` | *The Autobody Shop* — a self-directed, car-metaphor fitness hub. Two "drives": **Manual** (pick your own **tune-up packages** — Horsepower/power, Engine/strength, Fuel Tank/endurance, Turbo/power-endurance, Exterior/prehab — and get an instant, personalised **build sheet**) and **Automatic** (order a trainer-fitted **lift kit** from a video assessment). Includes **the dyno bench**, a localStorage benchmark tracker that flags personal bests, plus service-bay teasers for the WOD (car wash), nutrition (gas station) and blog (oil change). |
 | **Promotion** | `promotion.html` | Branded merch store — apparel, chalk bags and accessories — with category filtering and a demo checkout. |
 
 ### Free articles (Philosophy)
@@ -30,14 +29,13 @@ index.html          Landing page tying the sections together
 philosophy.html     Section 01 — the science hub
 practice.html       Section 02 — program library + workout logger
 performance.html    Section 03 — custom program builder
-autobody-shop.html  The Garage — self-directed "autobody shop" (manual builds + dyno bench)
+autobody-shop.html  Legacy URL — redirects to Performance (section consolidated)
 promotion.html      Section 04 — branded merch store
 articles/           Free long-form articles
-assets/css/styles.css   Shared design system (incl. the autobody-shop skin)
+assets/css/styles.css   Shared design system
 assets/js/site.js       Nav, footer year, demo purchase modal
 assets/js/logger.js     Workout log (localStorage) + SVG progress charts
 assets/js/generator.js  Rules-based custom-program engine
-assets/js/autobody.js   The Garage: manual build-sheet engine + dyno benchmark tracker (localStorage)
 ```
 
 ## Notes for going live
