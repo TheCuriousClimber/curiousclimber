@@ -45,6 +45,12 @@ assets/js/autobody.js   The Garage: manual build-sheet engine + dyno benchmark t
 This is a fully working **front-end**. A few things are intentionally stubbed
 so the site owner can wire them to real services:
 
+- **Legal & safety** — `legal/terms.html`, `legal/privacy.html`,
+  `legal/disclaimer.html` and `legal/par-q.html` (health-readiness screening)
+  ship as **templates**. They're linked in every footer, in the checkout
+  agreement line, and from a health notice by the workout logger. **Fill in the
+  `[JURISDICTION]`/emergency-number placeholders and have a lawyer in your
+  jurisdiction review them before taking any payment.**
 - **Payments (Gumroad)** — Buy / Unlock / Add-to-cart buttons are wired to
   Gumroad and ship in **demo mode** (a modal opens, nothing is charged). To go
   live, fill in `GUMROAD_USER` and the product permalinks in the config block at
