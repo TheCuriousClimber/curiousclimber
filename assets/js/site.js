@@ -39,7 +39,7 @@
     "members-library":   "members-library",
     // --- Performance ---
     "custom-performance":"custom-performance",
-    // --- The Garage / Autobody Shop ---
+    // --- Coached video assessment (Performance) ---
     "lift-kit":          "lift-kit",
     // --- Promotion / merch ---
     "send-it-tee":  "send-it-tee",
