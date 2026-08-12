@@ -27,15 +27,28 @@ own industrial "garage" design system, separate from the climbing site.
 
 ```
 index.html            Landing — the shop, three standards, manual vs automatic, packages, services
-manual.html           Self-guided: 4 tune-up packages (interactive build sheet) + 4 quality deep-dives
-automatic.html        Coached: personalized lift kit, video assessment, service process
+manual.html           Self-guided: 4 tune-up programs (buy + build sheet) + 4 quality deep-dives + bundle
+automatic.html        Coached: video assessment + lift kit ($149), monthly retune ($79/mo)
 under-the-hood.html   Requirements, recommendations, the tuning spec table, periodization, FAQ
-car-wash.html         Workout of the day — weekly wash rotation
-gas-station.html      Nutrition — fuel grades, timing, plans
+car-wash.html         Workout of the day — weekly rotation + Wash Pass membership ($12/mo)
+gas-station.html      Nutrition — fuel grades, timing, 3 plans ($19) + 3-pack ($39)
 oil-change.html       Blog index
+legal/                Terms, Privacy, Health Disclaimer, PAR-Q (linked in every footer)
 assets/styles.css     Standalone "performance garage" design system
-assets/app.js         Nav toggle, footer year, self-guided build-sheet configurator, scroll reveal
+assets/app.js         Nav, year, build sheet, scroll reveal, + Gumroad checkout & demo modal
+GUMROAD-SETUP.md      Product table + one-config-block go-live guide
+LAUNCH-CHECKLIST.md   Everything from demo to taking real money
 ```
+
+## Selling products
+
+The site is a **launch-ready storefront**. Every Buy button is wired to
+**Gumroad** but ships in **safe demo mode** — clicking opens a modal that charges
+nothing until you add your Gumroad account. Flip it live by editing one config
+block in `assets/app.js` (`GUMROAD_USER` + permalinks). Full instructions and the
+12-product catalog are in **`GUMROAD-SETUP.md`**; the path to launch is in
+**`LAUNCH-CHECKLIST.md`**. Legal pages required to sell (Terms, Privacy, Health
+Disclaimer, PAR-Q) live in `legal/` and are linked from every footer.
 
 ## The three build standards
 
