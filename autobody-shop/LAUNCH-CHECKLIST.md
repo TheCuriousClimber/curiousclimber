@@ -35,10 +35,15 @@ storefront taking real money.
 - [ ] Optional: swap emoji package art for photography/illustration
 
 ## 5. Publish (GitHub Pages)
+A deploy workflow is included at `.github/workflows/pages.yml` (repo root).
 - [ ] Merge the PR to `main`
-- [ ] Settings → Pages → Deploy from branch → `main` → `/ (root)` → Save
+- [ ] Settings → Pages → Build and deployment → Source → **GitHub Actions** (one-time)
+- [ ] Push to `main` (or run the workflow manually) → it deploys automatically
 - [ ] Site is live at `…/curiousclimber/autobody-shop/`
 - [ ] (Later) point your custom domain at it
+
+> Prefer no Actions? You can instead pick **Deploy from a branch → `main` →
+> `/ (root)`** — the site is plain static files and works either way.
 
 ## 6. Nice-to-haves
 - [ ] Email capture on the Oil Change (blog) — e.g. a hosted form
