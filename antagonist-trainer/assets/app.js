@@ -369,7 +369,7 @@
           "× per week, ideally on or after your main training days (not before hard climbing / throwing). " +
           "Progress the numbers week to week exactly as laid out — the deload in week 4 is part of the adaptation, not an optional extra.</p>" +
         weekBlocks +
-        "<div class='notice mt-4'><span>📋</span><span>Log each session in the <a href='practice.html#logger'>training log</a> so you can watch symptoms trend down and loads trend up over the block.</span></div>" +
+        "<div class='notice mt-4'><span>📋</span><span>Log each session — sets, holds and your symptom score — so you can watch symptoms trend down and loads trend up over the block.</span></div>" +
         "<div class='mt-3 flex'>" +
           "<button class='btn btn-ghost' id='antag-print' type='button'>Print / save this block</button>" +
         "</div>" +
@@ -383,4 +383,19 @@
     var pb = document.getElementById("antag-print");
     if (pb) pb.addEventListener("click", function () { window.print(); });
   }
+})();
+
+/* =====================================================================
+   Minimal standalone site behaviour (this project does not depend on the
+   climbing site's site.js): mobile nav toggle + footer year.
+   ===================================================================== */
+(function () {
+  "use strict";
+  var toggle = document.querySelector(".nav-toggle");
+  var links = document.querySelector(".nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", function () { links.classList.toggle("open"); });
+  }
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
 })();
