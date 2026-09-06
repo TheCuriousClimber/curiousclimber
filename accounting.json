@@ -23,9 +23,9 @@
     "fx_note": "Approximate. Used only to express USD API/infra costs in CAD for the net-surplus calculation."
   },
   "token_usage": {
-    "estimated_total_input_tokens": 290000,
-    "estimated_total_output_tokens": 37000,
-    "estimated_cost_usd": 2.38,
+    "estimated_total_input_tokens": 430000,
+    "estimated_total_output_tokens": 53000,
+    "estimated_cost_usd": 3.47,
     "basis": "Rough cumulative estimate across sessions (assessment, Gumroad read-only verification, ledger + reporting, flagship program generation, PDF pipeline, and Phase 3 SEO + article via subagents). Refine as real usage data becomes available."
   },
   "infrastructure_costs_usd": [
@@ -47,13 +47,13 @@
   "revenue": {
     "source": "Gumroad",
     "gross_revenue_cad": 0.0,
-    "sales_count": 0,
+    "sales_count": 1,
     "refunds_cad": 0.0,
-    "last_synced": "2026-09-06T16:17:51",
-    "note": "All 10 program/membership products are DRAFT / unpublished and the site is in demo mode. Expected revenue is 0 until the executive authorizes go-live."
+    "last_synced": "2026-09-06T23:51:40",
+    "note": "LIVE as of 2026-09-06 — site checkout points at thecuriousclimber.gumroad.com (GUMROAD_USER set on main). sales_count currently includes one $0.00 100%-discount fulfillment test (code since deleted); gross_revenue_cad reflects real paid revenue only, so first paid sale will move it above 0."
   },
   "distribution": {
-    "net_surplus_cad": -3.26,
+    "net_surplus_cad": -4.75,
     "reinvest_10pct_cad": 0.0,
     "payout_90pct_cad": 0.0,
     "note": "Computed by scripts/report.py from (gross revenue - refunds - costs). Splits apply only to positive net surplus."
@@ -123,6 +123,24 @@
       "date": "2026-09-06",
       "type": "token_usage",
       "description": "Logged estimated tokens: +90,000 in / +12,000 out",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "token_usage",
+      "description": "Logged estimated tokens: +140,000 in / +16,000 out",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "milestone",
+      "description": "GO LIVE: merged PR #20 (GUMROAD_USER=thecuriousclimber). Live Gumroad checkout active across the site.",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "verification",
+      "description": "Fulfillment verified via 100%-discount test purchase: 25-page PDF delivered from thecuriousclimber.gumroad.com; test discount code deleted. Recorded as 1 sale at $0.00.",
       "amount_usd": 0.0
     }
   ]

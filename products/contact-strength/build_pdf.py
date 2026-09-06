@@ -13,8 +13,10 @@ Usage:
 
 Design:
     * Consistent A4 margins via @page.
-    * A running branded header + footer repeated on every page (position:fixed,
-      which Chromium repeats per printed page).
+    * A running branded header + footer via a table thead/tfoot (table-header-
+      group / table-footer-group). Chromium repeats these on every printed page
+      AND reserves their space, so body content never overlaps them (unlike
+      position:fixed, which mis-positions across pages).
     * A page break before every numbered section (h2) and before every training
       PHASE, so phases start clean.
     * Tables, blockquotes and list items avoid breaking across pages.
