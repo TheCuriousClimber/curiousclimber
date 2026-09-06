@@ -2,6 +2,14 @@
 
 **Internal only. Not customer-facing.**
 
+> ⚠️ **Paid content is LOCAL-ONLY.** `PROGRAM.md`, `PROGRAM.html`, and
+> `PROGRAM.pdf` are git-ignored (see repo-root `.gitignore`) so they are never
+> committed to this public repo. They live only on disk here and are delivered
+> to customers **only through Gumroad**. Keep a private backup of `PROGRAM.md`
+> — `build_pdf.py` regenerates the HTML/PDF from it, but the source itself is
+> not in version control. This file (`README.md`) and `build_pdf.py` remain
+> tracked.
+
 ## What this is
 
 The complete, self-contained digital training program that a customer receives when they
