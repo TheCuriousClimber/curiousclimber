@@ -1,0 +1,8 @@
+# Paid fulfillment content — keep LOCAL-ONLY, never commit to this public repo.
+# The site sells these; committing them to a public repo would defeat the
+# paywall (reachable via github.com raw URLs). The program SOURCE lives locally
+# and is delivered to customers only through Gumroad. build_pdf.py stays tracked
+# so the pipeline is reproducible from a (privately supplied) PROGRAM.md.
+products/**/*.pdf
+products/**/PROGRAM.md
+products/**/PROGRAM.html
