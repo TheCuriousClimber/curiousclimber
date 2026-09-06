@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "venture": "The Kinesiology of Climbing",
+    "operator": "Autonomous Venture Architect (AVA)",
+    "reporting_currency": "CAD",
+    "capital_currency": "USD",
+    "created": "2026-09-06",
+    "last_updated": "2026-09-06",
+    "notes": "Internal ledger. Revenue figures under 'revenue' are synced read-only from the Gumroad API by scripts/report.py. Token figures are ESTIMATES (the runtime does not expose exact per-session counts); tune pricing_assumptions to your plan. Nothing here charges or publishes anything."
+  },
+  "capital": {
+    "starting_credit_ceiling_usd": 100.0,
+    "reinvestment_rate": 0.1,
+    "payout_rate": 0.9,
+    "payout_account_configured": false,
+    "payout_notes": "Profit sweep (90% of net surplus) is NOT automated yet. No payout processor is wired. Left as a manual/attended step until the executive authorizes it."
+  },
+  "pricing_assumptions": {
+    "note": "Placeholder estimate for burn math only. Set to your actual Anthropic plan rates. USD per million tokens (MTok).",
+    "input_usd_per_mtok": 5.0,
+    "output_usd_per_mtok": 25.0,
+    "fx_usd_to_cad": 1.37,
+    "fx_note": "Approximate. Used only to express USD API/infra costs in CAD for the net-surplus calculation."
+  },
+  "token_usage": {
+    "estimated_total_input_tokens": 200000,
+    "estimated_total_output_tokens": 25000,
+    "estimated_cost_usd": 1.62,
+    "basis": "Rough estimate for the setup session (workspace scan, Gumroad read-only verification, ledger + reporting scaffolding, flagship program generation via subagent). Refine as real usage data becomes available."
+  },
+  "infrastructure_costs_usd": [
+    {
+      "item": "Hosting (GitHub Pages)",
+      "recurring": false,
+      "amount_usd": 0.0,
+      "date": "2026-09-06",
+      "note": "Free tier; static site auto-deploys on push to main."
+    },
+    {
+      "item": "Domain registration",
+      "recurring": false,
+      "amount_usd": 0.0,
+      "date": "2026-09-06",
+      "note": "Using github.io subdomain for now; no custom domain purchased."
+    }
+  ],
+  "revenue": {
+    "source": "Gumroad",
+    "gross_revenue_cad": 0.0,
+    "sales_count": 0,
+    "refunds_cad": 0.0,
+    "last_synced": "2026-09-06T15:52:52",
+    "note": "All 10 program/membership products are DRAFT / unpublished and the site is in demo mode. Expected revenue is 0 until the executive authorizes go-live."
+  },
+  "distribution": {
+    "net_surplus_cad": -2.22,
+    "reinvest_10pct_cad": 0.0,
+    "payout_90pct_cad": 0.0,
+    "note": "Computed by scripts/report.py from (gross revenue - refunds - costs). Splits apply only to positive net surplus."
+  },
+  "ledger": [
+    {
+      "date": "2026-09-06",
+      "type": "setup",
+      "description": "Venture assessment + go-live plumbing verification. Confirmed all 10 Gumroad digital/program products carry correct custom_permalinks and are unpublished; site remains in demo mode.",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "setup",
+      "description": "Created accounting.json ledger and scripts/report.py credit-burn reporting.",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "fulfillment",
+      "description": "Generated flagship deliverable: Contact Strength & Finger Power program (products/contact-strength/).",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "fix",
+      "description": "Resolved marketing/delivery discrepancy: removed unfulfilled 'video demos' promise from practice.html; copy now matches the written deliverable.",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "fix",
+      "description": "Cleaned up Section 15 citations to honest, high-consensus foundational references (no fabricated titles/DOIs).",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "tooling",
+      "description": "Added dependency-free PDF pipeline (products/contact-strength/build_pdf.py) rendering PROGRAM.md to a branded 25-page PDF via headless Chromium.",
+      "amount_usd": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "type": "token_usage",
+      "description": "Logged estimated tokens: +80,000 in / +10,000 out",
+      "amount_usd": 0.0
+    }
+  ]
+}
