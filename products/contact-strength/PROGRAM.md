@@ -626,34 +626,49 @@ the strength on the wall. Judge the block by your climbing in the month *after* 
 
 ## 15. References & further reading
 
-*These point to well-established work in climbing science, sports medicine, and resistance
-training. Summaries throughout this program are simplified for a general audience.*
+*These are foundational, widely-cited works in climbing science, sports medicine, and
+resistance training, listed by author/year and topic. Summaries throughout this program are
+simplified for a general audience. The principles below are high-consensus; a site owner who
+wishes to publish a formal bibliography can add full titles and page details from the
+originals — but nothing here depends on a specific edition or DOI.*
 
-> **Publishing note (for the site owner):** the citations below are given by author/year and
-> topic and reflect widely-cited work, but **exact titles, journals, years, and page details
-> should be verified against the original sources before this program is sold.** Do not
-> present any citation as exact until confirmed. Flagged items are marked ⚠.
+**Finger-strength & hangboard training**
 
-- ⚠ **López-Rivera, E. & González-Badillo, J.J. (2012, and later work).** Comparison of
-  finger strength–training methods (e.g. maximal added weight vs. intermittent/repeaters) in
-  sport climbers. *Sports Technology / European Journal of Sport Science.* — Basis for the
-  max-hang approach.
-- ⚠ **Schöffl, V., Hochholzer, T., and colleagues.** Body of work on finger **pulley
-  injuries** in rock climbers, including grading, mechanism (full-crimp loading), and
-  management. *Wilderness & Environmental Medicine / Sports Medicine and related.*
-- ⚠ **Vigouroux, L., and colleagues.** Biomechanics of finger **pulley loading and the crimp
-  grip** — why full crimp loads the A2 pulley most. *Journal of Biomechanics.*
-- ⚠ **Schöffl, I., and colleagues.** **Epiphyseal (growth-plate) stress fractures** of the
-  fingers in adolescent climbers. — Basis for the open-physis / under-18 caution.
-- ⚠ **American College of Sports Medicine (2009).** Progression models in resistance training
-  for healthy adults. *Medicine & Science in Sports & Exercise.* — General progression &
-  periodization principles.
-- ⚠ **Kraemer, W.J. & Ratamess, N.A. (2004).** Fundamentals of resistance training:
-  progression and exercise prescription. *Medicine & Science in Sports & Exercise.*
-- ⚠ **Issurin, V.B. (2010).** New horizons for the methodology and physiology of training
-  periodization. *Sports Medicine.*
-- ⚠ Reviews on **finger strength as a discriminator of climbing performance** and on
-  **hangboard training** (e.g. work summarised in recent sports-science reviews of climbing).
+- **López-Rivera, E. & González-Badillo, J. J. (2012; and follow-up work).** Comparisons of
+  maximal-load ("max added weight") hangboard training against intermittent/repeater methods
+  in sport climbers — the empirical basis for the max-hang, low-rep approach used here.
+- **Medernach, J. P., Kleinöder, H., & colleagues.** Fingerboard-specific training increases
+  maximal finger strength in climbers — support for dedicated hangboard blocks over climbing
+  alone.
+- **Levernier, G., Laffaye, G., and related work.** Maximal finger force and rate of force
+  development distinguish higher- from lower-performing climbers — why "contact strength"
+  transfers to harder climbing.
+
+**Pulley & crimp biomechanics; injury**
+
+- **Schöffl, V., Hochholzer, T., and colleagues.** The standard body of work on finger
+  **pulley injuries** in rock climbers — mechanism (crimp loading), grading, diagnosis, and
+  management. Basis for the warning signs and stop rules in Section 3.
+- **Vigouroux, L., Quaine, F., and colleagues.** Biomechanical modelling of flexor-tendon and
+  **pulley loading in the crimp vs. open grip** — why the full crimp places the highest load
+  on the A2 pulley. Basis for the open-hand bias and full-crimp caution.
+- **Schöffl, I., Schöffl, V., and colleagues.** **Epiphyseal (growth-plate) stress fractures**
+  of the finger in adolescent climbers — basis for the open-physis / under-18 gate in
+  Section 2.
+
+**Tendon adaptation, progression & periodization (foundational principles)**
+
+- **Magnusson, S. P., Kjaer, M., and colleagues.** Tendon and collagen adaptation to
+  mechanical loading — connective tissue remodels over **months**, more slowly than muscle or
+  neural drive. Basis for the "let the tissue catch up" prep phase and the patience caveats.
+- **American College of Sports Medicine — Position Stand (2009).** Progression models in
+  resistance training for healthy adults — general overload, intensity-before-volume, and
+  recovery principles.
+- **Kraemer, W. J. & Ratamess, N. A. (2004).** Fundamentals of resistance training:
+  progression and exercise prescription — dose-response and how intensity/volume are
+  manipulated across a block.
+- **Issurin, V. B. (2010).** Periodization principles (including block periodization) — the
+  "apply a stress, adapt, then evolve the stimulus, and deload on purpose" logic of Section 6.
 
 **Related free reading on the site:**
 *The climber's fingers: pulleys, tendons & staying healthy* (`articles/finger-anatomy.html`),

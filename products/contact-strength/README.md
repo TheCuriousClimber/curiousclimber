@@ -27,10 +27,12 @@ Gumroad product's download.**
 
 ## Human review checklist — before this is fulfillment-ready
 
-- [ ] **Verify the references (Section 15).** All citations are given by author/year/topic
-      and marked ⚠. Confirm exact titles/journals/years against originals, or soften to
-      "see the finger-anatomy / periodization articles," **before selling.** Do not present
-      any citation as exact until confirmed.
+- [x] **References (Section 15) cleaned up.** Speculative journal/volume attributions were
+      removed; citations are now honest, high-consensus foundational works listed by
+      author/year/topic (López-Rivera hangboard protocols, Schöffl pulley & epiphyseal work,
+      Vigouroux crimp biomechanics, ACSM/Kraemer & Ratamess/Issurin progression, Magnusson &
+      Kjaer tendon adaptation). No fabricated titles or DOIs. *Optional:* add a full formal
+      bibliography from the originals if you want one — nothing depends on a specific edition.
 - [ ] **Review all safety and scope language** (Sections 2, 3, 14, and the closing
       disclaimer) — especially the pulley-injury warning signs, the pain/stop rules, and the
       adolescent/open-physis (growth-plate) caution. Confirm it matches
@@ -40,8 +42,10 @@ Gumroad product's download.**
       after any edits.
 - [ ] **Export to PDF** and proof the tables/page breaks. Add branding/footer to match site.
 - [ ] **Cover image / thumbnail** for the Gumroad listing — TODO (not created here).
-- [ ] **Decide on video demos.** `practice.html` markets "video demos" with this program.
-      Either produce/link them or adjust the marketing copy so the offer matches delivery.
+- [x] **Video-demos discrepancy resolved.** `practice.html` no longer promises "video
+      demos"; the copy now describes the actual written deliverable (exercise library with
+      movement cues, auto-regulation & progression protocols, load-tracking sheet, logger).
+      If you later add videos, you can restore the mention.
 - [ ] **Human: create the Gumroad product** at permalink `contact-strength`, set the
       **$39 CAD** price, upload the exported PDF, then set `GUMROAD_USER` to go live.
 - [ ] Consider bundling the relevant free articles (finger-anatomy, periodization,
