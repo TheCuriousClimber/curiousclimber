@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+# Internal / paid assets — kept out of crawls (also excluded from the built
+# site via _config.yml, so these should 404 on the live site regardless).
+Disallow: /products/
+Disallow: /scripts/
+
+Sitemap: https://thecuriousclimber.github.io/curiousclimber/sitemap.xml

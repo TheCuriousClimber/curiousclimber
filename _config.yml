@@ -1,0 +1,21 @@
+# GitHub Pages (Jekyll) configuration.
+#
+# IMPORTANT — paywall integrity: GitHub Pages otherwise publishes the ENTIRE
+# repo. The paths below stay in the repo (for version control and build
+# tooling) but are NOT copied to the live site, so the paid fulfillment files
+# cannot be downloaded for free from the Pages URL. Deliver paid programs only
+# through Gumroad.
+#
+# NOTE: this protects the *published site*. If the GitHub repository itself is
+# public, the committed files are still reachable via github.com raw URLs —
+# see the PR notes for the recommendation (keep the repo private, or don't
+# commit the sellable file to the repo at all).
+
+exclude:
+  - products/           # paid fulfillment assets (PROGRAM.pdf/html/md)
+  - scripts/            # internal ops / reporting scripts
+  - accounting.json     # internal ledger
+  - README.md
+  - LAUNCH-CHECKLIST.md
+  - GUMROAD-SETUP.md
+  - CLAUDE.md
