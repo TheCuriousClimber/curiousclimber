@@ -20,7 +20,7 @@
   // >>> THE ONLY LINE YOU MUST EDIT TO GO LIVE <<<
   // Set this to your Gumroad subdomain. While it's "" the whole site stays in
   // safe demo mode (nothing is charged), no matter what's in GUMROAD_PRODUCTS.
-  var GUMROAD_USER = "mcweeny"; // LIVE — real Gumroad checkout. Set back to "" to return to safe demo mode.
+  var GUMROAD_USER = "thecuriousclimber"; // LIVE — real Gumroad checkout. Set back to "" to return to safe demo mode.
 
   // Permalinks are pre-filled to match each product key. Create your Gumroad
   // products using these exact permalinks (see GUMROAD-SETUP.md) and they light
