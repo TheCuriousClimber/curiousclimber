@@ -218,34 +218,49 @@ def convert(md):
 CSS = """
 :root { --ink:#1a1a1a; --muted:#666; --accent:#1f5c4a; --line:#d8d8d8; --band:#f4f6f5; }
 * { box-sizing: border-box; }
-@page { size: A4; margin: 24mm 16mm 22mm 16mm; }
+/* Outer paper margins. The running header/footer live INSIDE the flow via a
+   table header/footer group (below), which reserves real space on every page —
+   so body content can never collide with them the way position:fixed did. */
+@page { size: A4; margin: 16mm 18mm 16mm 18mm; }
 html, body { margin: 0; padding: 0; }
 body {
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   color: var(--ink); font-size: 10.6pt; line-height: 1.5;
   -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }
-/* running header / footer — position:fixed repeats on every printed page */
-.page-header, .page-footer {
-  position: fixed; left: 0; right: 0; color: var(--muted);
+
+/* ---- Running header/footer via table header/footer groups ----
+   Chromium repeats thead on the top and tfoot on the bottom of every printed
+   page and reserves their height in the layout, so nothing overlaps. Scope the
+   layout rules to the OUTER table only (direct-child combinators) so the
+   document's own data tables are unaffected. */
+table.page { width: 100%; border-collapse: collapse; }
+table.page > thead { display: table-header-group; }
+table.page > tfoot { display: table-footer-group; }
+table.page > thead > tr > td,
+table.page > tfoot > tr > td,
+table.page > tbody > tr > td { border: 0; padding: 0; }
+.rh, .rf {
+  display: flex; justify-content: space-between; gap: 8mm; color: var(--muted);
   font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 7.6pt; letter-spacing: .02em;
 }
-.page-header { top: -14mm; border-bottom: .5pt solid var(--line); padding-bottom: 2mm;
-  display: flex; justify-content: space-between; text-transform: uppercase; }
-.page-header .brand { color: var(--accent); font-weight: 700; }
-.page-footer { bottom: -14mm; border-top: .5pt solid var(--line); padding-top: 2mm;
-  display: flex; justify-content: space-between; gap: 8mm; }
-.page-footer .note { color: var(--muted); }
-h1 { font-size: 26pt; line-height: 1.15; margin: 0 0 .2em; color: var(--accent); }
-h2 { font-size: 15pt; color: var(--accent); margin: 0 0 .5em;
+.rh { text-transform: uppercase; border-bottom: .5pt solid var(--line);
+  padding-bottom: 2.5mm; margin-bottom: 8mm; }
+.rh .brand { color: var(--accent); font-weight: 700; }
+.rf { border-top: .5pt solid var(--line); padding-top: 2.5mm; margin-top: 8mm; }
+
+/* ---- Content typography ---- */
+h1 { font-size: 26pt; line-height: 1.15; margin: 0 0 .2em; color: var(--accent);
+  break-before: avoid; break-after: avoid; }
+h2 { font-size: 15pt; color: var(--accent); margin: 0 0 .6em;
   padding-bottom: .18em; border-bottom: 1.5pt solid var(--accent);
-  break-before: page; page-break-before: always; }
-h3 { font-size: 12pt; margin: 1.2em 0 .4em; color: #143f33; }
-h3.phase { break-before: page; page-break-before: always; margin-top: 0;
+  break-before: page; break-after: avoid; }
+h3 { font-size: 12pt; margin: 1.2em 0 .4em; color: #143f33; break-after: avoid; }
+h3.phase { break-before: page; margin-top: 0;
   background: var(--band); border-left: 3pt solid var(--accent);
   padding: .35em .6em; }
-p { margin: .5em 0; }
+p { margin: .5em 0; orphans: 2; widows: 2; }
 a { color: var(--accent); text-decoration: none; }
 strong { font-weight: 700; }
 code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: .86em;
@@ -253,19 +268,19 @@ code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: .86em;
 hr { border: 0; border-top: .5pt solid var(--line); margin: 1.2em 0; }
 ul, ol { margin: .5em 0 .5em 0; padding-left: 1.4em; }
 li { margin: .28em 0; break-inside: avoid; }
+/* callouts / disclaimer blocks */
 blockquote { margin: 1em 0; padding: .6em 1em; background: var(--band);
   border-left: 3pt solid var(--accent); break-inside: avoid; }
 blockquote p { margin: 0; }
-table { width: 100%; border-collapse: collapse; margin: .8em 0; font-size: 9pt;
-  break-inside: avoid; }
-th, td { border: .5pt solid var(--line); padding: 5px 7px; text-align: left;
-  vertical-align: top; }
-thead th { background: var(--accent); color: #fff; font-family: -apple-system,
-  "Segoe UI", Helvetica, Arial, sans-serif; font-size: 8.4pt; text-transform: uppercase;
-  letter-spacing: .02em; }
-tbody tr:nth-child(even) { background: #fafbfb; }
-/* title block sits on page 1; first section still breaks to its own page */
-.titlewrap { break-after: avoid; }
+/* document data tables (not the outer layout table) */
+.rbody table { width: 100%; border-collapse: collapse; margin: .8em 0;
+  font-size: 9pt; break-inside: avoid; }
+.rbody th, .rbody td { border: .5pt solid var(--line); padding: 5px 7px;
+  text-align: left; vertical-align: top; }
+.rbody thead th { background: var(--accent); color: #fff;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 8.4pt; text-transform: uppercase; letter-spacing: .02em; }
+.rbody tbody tr:nth-child(even) { background: #fafbfb; }
 """
 
 TEMPLATE = """<!doctype html>
@@ -277,17 +292,23 @@ TEMPLATE = """<!doctype html>
 <style>{css}</style>
 </head>
 <body>
-  <div class="page-header">
-    <span class="brand">{brand}</span>
-    <span>{title}</span>
-  </div>
-  <div class="page-footer">
-    <span>© {brand}</span>
-    <span class="note">{footer}</span>
-  </div>
-  <main>
+  <table class="page">
+    <thead>
+      <tr><td>
+        <div class="rh"><span class="brand">{brand}</span><span>{title}</span></div>
+      </td></tr>
+    </thead>
+    <tfoot>
+      <tr><td>
+        <div class="rf"><span>© {brand}</span><span class="note">{footer}</span></div>
+      </td></tr>
+    </tfoot>
+    <tbody class="rbody">
+      <tr><td>
 {body}
-  </main>
+      </td></tr>
+    </tbody>
+  </table>
 </body>
 </html>
 """
