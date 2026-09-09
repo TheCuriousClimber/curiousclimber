@@ -1,0 +1,45 @@
+name: Daily Accounting Sync
+
+# Keeps accounting.json up to date automatically so no one has to run
+# `python3 scripts/report.py --sync` by hand. The sync is read-only with
+# respect to money (it only pulls Gumroad sales via a read-only GET).
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # every day at 00:00 UTC
+  workflow_dispatch:        # allow manual runs from the Actions tab
+
+permissions:
+  contents: write           # let the default GITHUB_TOKEN push the commit
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run accounting sync (read-only revenue pull)
+        # If GUMROAD_ACCESS_TOKEN is not configured as a repo secret it is an
+        # empty string; scripts/report.py detects that and runs the safe
+        # read-only path (skips the live pull, still recomputes the ledger).
+        env:
+          GUMROAD_ACCESS_TOKEN: ${{ secrets.GUMROAD_ACCESS_TOKEN }}
+        run: python3 scripts/report.py --sync
+
+      - name: Commit and push if accounting.json changed
+        run: |
+          if git diff --quiet -- accounting.json; then
+            echo "No changes to accounting.json — nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add accounting.json
+            git commit -m "chore: daily automated accounting sync [skip ci]"
+            git push
+          fi
