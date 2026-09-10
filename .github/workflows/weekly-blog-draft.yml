@@ -1,0 +1,72 @@
+name: Weekly blog draft
+
+# Drafts one new free article each week and opens a pull request for review.
+# Nothing publishes until the owner merges the PR (GitHub Pages deploys on merge).
+#
+# Requires (one-time, done by the repo owner):
+#   1. Install the Claude GitHub app on this repo.
+#   2. Add repo secret  ANTHROPIC_API_KEY.
+#   3. Add repo variable ENABLE_BLOG_DRAFTS = true   (acts as the on/off switch,
+#      so the schedule stays dormant — no failing runs — until you're ready).
+# Also runnable on demand from the Actions tab (workflow_dispatch), optionally
+# with a topic.
+
+on:
+  schedule:
+    # Mondays at 14:00 UTC (weekly). Adjust the cron to change cadence.
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Optional article topic (blank = Claude picks from the wheelhouse)"
+        required: false
+        type: string
+
+jobs:
+  draft:
+    # Dormant until you flip the repo variable ENABLE_BLOG_DRAFTS to "true".
+    if: ${{ vars.ENABLE_BLOG_DRAFTS == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Draft article and open PR
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are drafting ONE new free article for this static climbing-training
+            site and opening a pull request for the owner to review. Do not publish
+            or merge anything yourself.
+
+            Follow articles/README.md exactly (the posts convention). Steps:
+            1. Pick a fresh topic from the "Topic ideas" wheelhouse in
+               articles/README.md that is NOT already covered by an existing file
+               in articles/. If a topic was supplied, use it: "${{ github.event.inputs.topic }}".
+            2. Create articles/<slug>.html by copying the structure of an existing
+               article (use articles/strength-to-weight.html as the template):
+               same head, nav, footer, prose structure, byline
+               "By David McWeeny, MSc Kinesiology", a realistic "N min read", and a
+               real "Sources & further reading" list. ~700-1100 words.
+            3. Add ONE matching <article class="card"> to articles/index.html,
+               immediately after the <!-- ARTICLES:START --> marker (newest first).
+            4. Create a new branch, commit both files, and open a pull request
+               titled "Article: <human title>" with a short summary of the topic,
+               the angle, and the sources used.
+
+            Hard rules: educational content only (not medical advice); evidence-based
+            with real, well-known citations (never fabricate sources); plain language
+            for non-scientists; free article (badge-free). Do NOT change pricing,
+            product config, checkout wiring (assets/js/site.js), or legal/PAR-Q
+            pages. Keep the site self-contained (no external scripts/fonts/trackers).
+          claude_args: |
+            --allowedTools Read,Write,Edit,Glob,Grep,Bash
