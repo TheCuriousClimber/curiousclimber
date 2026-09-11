@@ -26,36 +26,15 @@
   // products using these exact permalinks (see GUMROAD-SETUP.md) and they light
   // up automatically once GUMROAD_USER is set. Change a value here only if your
   // Gumroad permalink differs; set a value back to "" to keep that one in demo.
+  // Only two verified, deliverable-backed products carry live checkout. Every
+  // other former product was a "ghost" (no compiled deliverable) and its
+  // checkout has been removed from the site. Do not re-add a slug here unless a
+  // real deliverable exists for it.
   var GUMROAD_PRODUCTS = {
-    // --- Practice programs ---
+    // --- $39 CAD flagship (delivered via Gumroad; source in products/contact-strength) ---
     "contact-strength":  "contact-strength",
-    "anaerobic-capacity":"anaerobic-capacity",
-    "power-endurance":   "power-endurance",
-    "body-tension-core": "body-tension-core",
-    "hips-mobility":     "hips-mobility",
-    "footwork-balance":  "footwork-balance",
-    "complete-bundle":   "complete-bundle",
-    // --- Free lead magnet ($0) ---
-    "readiness-screen":  "readiness-screen",
-    // --- Philosophy membership ---
-    "members-library":   "members-library",
-    // --- Performance ---
-    "custom-performance":"custom-performance",
-    // --- Coached video assessment (Performance) ---
-    "lift-kit":          "lift-kit",
-    // --- Promotion / merch ---
-    "send-it-tee":  "send-it-tee",
-    "hoodie":       "hoodie",
-    "technical-tee":"technical-tee",
-    "beanie":       "beanie",
-    "chalk-bag":    "chalk-bag",
-    "chalk-bucket": "chalk-bucket",
-    "loose-chalk":  "loose-chalk",
-    "liquid-chalk": "liquid-chalk",
-    "bottle":       "bottle",
-    "salve":        "salve",
-    "stickers":     "stickers",
-    "starter-kit":  "starter-kit"
+    // --- $0 lead magnet (delivers downloads/finger-loading-readiness-screen.pdf) ---
+    "readiness-screen":  "readiness-screen"
   };
   /* ------------------------------------------------------------------ */
 
