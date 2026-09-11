@@ -35,6 +35,8 @@
     "hips-mobility":     "hips-mobility",
     "footwork-balance":  "footwork-balance",
     "complete-bundle":   "complete-bundle",
+    // --- Free lead magnet ($0) ---
+    "readiness-screen":  "readiness-screen",
     // --- Philosophy membership ---
     "members-library":   "members-library",
     // --- Performance ---
