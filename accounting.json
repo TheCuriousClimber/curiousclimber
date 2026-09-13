@@ -5,7 +5,7 @@
     "reporting_currency": "CAD",
     "capital_currency": "USD",
     "created": "2026-09-06",
-    "last_updated": "2026-09-12",
+    "last_updated": "2026-09-13",
     "notes": "Internal ledger. Revenue figures under 'revenue' are synced read-only from the Gumroad API by scripts/report.py. Token figures are ESTIMATES (the runtime does not expose exact per-session counts); tune pricing_assumptions to your plan. Nothing here charges or publishes anything."
   },
   "capital": {
@@ -49,7 +49,7 @@
     "gross_revenue_cad": 0.0,
     "sales_count": 1,
     "refunds_cad": 0.0,
-    "last_synced": "2026-09-12T03:52:47",
+    "last_synced": "2026-09-13T04:01:32",
     "note": "LIVE as of 2026-09-06 \u2014 site checkout points at thecuriousclimber.gumroad.com (GUMROAD_USER set on main). sales_count currently includes one $0.00 100%-discount fulfillment test (code since deleted); gross_revenue_cad reflects real paid revenue only, so first paid sale will move it above 0."
   },
   "distribution": {
